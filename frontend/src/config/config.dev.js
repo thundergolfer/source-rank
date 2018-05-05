@@ -1,5 +1,5 @@
 export default {
   api: {
-    baseUrl: 'http://sourcerank.org/api',
+    baseUrl: 'http://www.sourcerank.org/api',
   },
 };

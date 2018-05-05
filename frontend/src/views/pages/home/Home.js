@@ -44,7 +44,7 @@ class Home extends Component {
             flexGrow={1}
             flexBasis={0}
             marginTop={20}
-            marginRight={100}
+            marginRight={50}
           >
             <Box marginBottom={40}>
               <Heading
@@ -57,7 +57,9 @@ class Home extends Component {
 
             <Dropdown items={heuristicsData} onChange={this.handleChange}>
               {({ selectedIndex, onSelect, isOpen, onToggle }) => (
-                <Box>
+                <Box
+                  position="relative"
+                >
                   <Button
                     onClick={onToggle}
                     color="white"
@@ -94,13 +96,26 @@ class Home extends Component {
                     heuristicsData &&
                     heuristicsData.length > 0
                   ) && (
-                    <Box>
+                    <Box
+                      position="absolute"
+                      top="100%"
+                      left={0}
+                      width="100%"
+                      backgroundColor="white"
+                      borderSize={2}
+                      borderColor="purple"
+                      softEdges
+                      padding={10}
+                    >
                       {heuristicsData.map(( item, index ) => (
                         <Box
                           key={item.id}
                           onClick={onSelect( index )}
+                          padding={10}
                         >
-                          {item.name}
+                          <p style={{ margin: 0 }}>
+                            {item.name}
+                          </p>
                         </Box>
                       ))}
                     </Box>
@@ -122,15 +137,18 @@ class Home extends Component {
               softEdges
               borderSize={2}
               borderColor="purple"
+              minHeight={300}
             >
-              <Heading
-                color="black"
-                size="lg"
-              >
-                {heuristics.active == null
-                  ? 'Select a heuristic!'
-                  : heuristics.data[heuristics.active].name}
-              </Heading>
+              <Box marginBottom={25}>
+                <Heading
+                  color="black"
+                  size="lg"
+                >
+                  {heuristics.active == null
+                    ? 'Select a heuristic!'
+                    : heuristics.data[heuristics.active].name}
+                </Heading>
+              </Box>
 
               <p>
                 {heuristics.active == null
