@@ -4,6 +4,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logger from './logger';
 import Messages from './messages';
+import text2png from 'text2png';
 
 class API {
   constructor() {
@@ -60,6 +61,24 @@ class API {
 
       /* Send back a successful response */
       res.json({ success: true });
+    });
+
+    /* Setup a route to return an image with a ranking */
+    this.app.get( '/images/ranking/:ranking', ( req, res ) => {
+      /* Get the ranking provided */
+      const { ranking } = req.params;
+
+      /* Render the ranking to an image */
+      res.type( 'image/png' );
+      res.send( text2png( ranking, {
+        font: '200px Futura',
+        textColor: 'teal',
+        paddingLeft: 200,
+        paddingRight: 200,
+        paddingTop: 100,
+        paddingBottom: 100,
+        backgroundColor: 'white',
+      }));
     });
   }
 
