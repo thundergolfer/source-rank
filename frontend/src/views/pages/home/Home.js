@@ -7,7 +7,7 @@ import axios from 'axios';
 import { Api } from 'utils';
 import { fetchMethodologyHeuristics, selectMethodologyHeuristic } from 'flux/actions';
 import Layout from 'views/layout';
-import { Heading, Box, Dropdown, Button, Icon, Underline } from 'views/components';
+import { Heading, Box, Dropdown, Button, Icon, Underline, Spinner } from 'views/components';
 
 class Home extends Component {
   static propTypes = {
@@ -252,21 +252,24 @@ class Home extends Component {
               fetchingPublications ||
               fetchingRankings
             ) ? (
-              <p>Loading...</p>
+              <Spinner />
             ) : (
               error ? (
                 <p>Error!</p>
-              ) : (
-                publications.length > 0 ? (
-                  publications
+              ) : ((
+                rankings.publications &&
+                rankings.publications instanceof Array &&
+                rankings.publications.length > 0
+              ) ? (
+                  rankings.publications
                     .slice( 0, 100 )
                     .map( publication => {
-                      const { rank } = rankings.publications.find( pub => pub.id === publication.id );
-                      const color = ( rank >= 8 ) ? '#2ecc71' // Green
-                        : ( rank >= 5 ) ? '#f39c12' // Orange
+                      const { rank, score } = publication;
+                      const color = ( score >= 8 ) ? '#2ecc71' // Green
+                        : ( score >= 5 ) ? '#f39c12' // Orange
                         : '#e74c3c'; // Red
 
-                      console.log({ rank, color }); // eslint-disable-line no-console
+                      const pubData = publications.find( pub => pub.id === publication.id );
 
                       return (
                         <Box
@@ -301,12 +304,12 @@ class Home extends Component {
                                 fontSize: '1.5rem',
                               }}
                             >
-                              {publication.name}
+                              {pubData.name}
                             </p>
                           </Box>
 
                           <img
-                            src={publication.icon_url}
+                            src={pubData.icon_url}
                             style={{
                               height: 50,
                               width: 50,
