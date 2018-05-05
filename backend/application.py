@@ -10,6 +10,8 @@ from backend.schemas import ma
 from backend.models import db
 from backend.settings import config
 
+from flask_cors import CORS
+
 
 static_folder = '../frontend/public/static'
 
@@ -30,6 +32,7 @@ def create_app(marshmallow=None, sql_alchemy_db=None):
         initialise_app(app, marshmallow, sql_alchemy_db)
 
     attach_api(app)
+    CORS(app)  # TODO: remove when no longer needed
 
     return app
 
