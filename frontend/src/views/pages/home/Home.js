@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Layout from 'views/layout';
-import { Link } from 'views/components';
+import { Link, Heading } from 'views/components';
 
 class Home extends Component {
   render() {
@@ -10,7 +10,12 @@ class Home extends Component {
         container
         header
       >
-        <h1>Home</h1>
+        <Heading
+          size="lg"
+          color="white"
+        >
+          Choose a news quality signal
+        </Heading>
 
         <Link to="/about">
           <p>About</p>
