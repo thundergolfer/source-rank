@@ -3,8 +3,6 @@ from flask_restful import Api
 
 from backend.resources.todo import TodoList
 from backend.resources.publications import Publications
-from backend.resources.rank_publications import PublicationsRank
-from backend.resources.article import Article
 from backend.schemas import ma
 from backend.models import db
 from backend.settings import config
@@ -27,7 +25,7 @@ def create_app(marshmallow=None, sql_alchemy_db=None):
 
     if marshmallow and sql_alchemy_db:
         initialise_app(app, marshmallow, sql_alchemy_db)
-
+        
     attach_api(app)
 
     return app
@@ -38,5 +36,3 @@ def attach_api(app):
 
     api.add_resource(TodoList, '/api/todos')
     api.add_resource(Publications, '/api/publications')
-    api.add_resource(Article, '/api/article')
-    api.add_resource(PublicationsRank, '/api/publications/rank')

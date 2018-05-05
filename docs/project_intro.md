@@ -16,7 +16,6 @@
 2. “I value sources” - ie. How many links out of an average article on the publication
 3. “I don’t want click-funded content” - ie. Do they have a subscription revenue model?
 4. “I want to avoid dishonest publications” - ie. How many time have their articles been review as “false” on Snopes.com, TrueFact, etc. etc.
-5. "I want to avoid highly biased sources" - ie. Use https://mediabiasfactcheck.com/
 
 ### Getting the data - “I trust the experts”
 1. Scrape articles from a list of publications
@@ -38,7 +37,3 @@
 ### Getting the data - “I want to avoid dishonest publications”
 1. Fact check organisations will more often (I think) fact check *people* rather than individual articles
 2. So if you search for people in the `author` table and see whether their name shows up on the fact check websites, we can trace this back to the publications they've published on.
-
-### Getting the data - "I want to avoid highly biased sources"
-
-MediaBiasFactCheck.com has a lot of data on this, but they don't seem to provide a public API. Scraping their list-view pages shouldn't be too hard though.

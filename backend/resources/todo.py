@@ -1,4 +1,4 @@
-# NOTE: This module was only here as boilerplate. It will eventually be removed
+# NOTE: This modul was only here as boilerplate. It will eventually be removed
 from flask_restful import Resource
 
 
