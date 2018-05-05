@@ -35,5 +35,4 @@ def downgrade():
     op.drop_column('publication', 'bias_level')
     op.drop_constraint(None, 'article', type_='foreignkey')
     op.drop_table('author_claim')
-    op.drop_table('company')
     # ### end Alembic commands ###
