@@ -131,7 +131,13 @@ function checkGoogle() {
 }
 
 function getURLRanking( url, callback ) {
-  callback({ num_rating: Math.round( Math.random() * 10 ), str_rating: "'A' grade" });
+  if ( url ) {
+    chrome.runtime.sendMessage({ url }, function(response) {
+      if ( response.valid ) {
+        callback( response );
+      }
+    });
+  }
 }
 
 if ( window.location.hostname.includes( 'facebook' )) {

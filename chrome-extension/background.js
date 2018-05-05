@@ -74,3 +74,10 @@ function updateBadge() {
 function getCurrentTabRating() {
   return tabRatings[activeTab];
 }
+
+chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
+  this.getRating( request.url ).then( rating => {
+      sendResponse( rating );
+  });
+  return true;
+});
