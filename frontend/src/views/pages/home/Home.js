@@ -49,7 +49,7 @@ class Home extends Component {
   }
 
   handleChange = item => {
-    console.log({ item });
+    console.log( item ) // eslint-disable-line
   }
 
   render() {

@@ -16,4 +16,4 @@ app.get( '/', ( request, response ) => {
 app.use( '/api/', proxy({ target: 'http://localhost:5000', changeOrigin: true }));
 
 app.listen( port );
-console.log( `server started on port ${port}` );
+console.log( `server started on port ${port}` ); // eslint-disable-line no-console
