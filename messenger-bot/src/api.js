@@ -6,6 +6,8 @@ import logger from './logger';
 import Messages from './messages';
 import text2png from 'text2png';
 import chroma from 'chroma-js';
+import ogs from 'open-graph-scraper';
+import cors from 'cors';
 
 class API {
   constructor() {
@@ -14,6 +16,8 @@ class API {
 
     /* Setup body parsers */
     this.app.use( bodyParser.json());
+
+    this.app.use( cors());
 
     /* Setup the routes */
     this.setupRoutes();
@@ -93,6 +97,18 @@ class API {
       res.write( '<Response>' );
       res.write( `<Message>${result}</Message>` );
       res.end( '</Response>' );
+    });
+
+    /* Get og image */
+    this.app.get( '/og', async ( req, res ) => {
+      const options = {'url': req.query.url };
+      ogs( options, function ( error, results ) {
+        if ( results && results.data && results.data.ogImage && results.data.ogImage.url ) {
+          res.redirect( results.data.ogImage.url );
+        } else {
+          res.json({});
+        }
+      });
     });
   }
 

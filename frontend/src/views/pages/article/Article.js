@@ -107,6 +107,7 @@ class Article extends Component {
           { loading && <Spinner /> }
           { data && (
             <div styleName="dataResult">
+              <div styleName="articleImage" style={{ backgroundImage: `url("http://localhost:4000/og?url=${url}")` }} />
               <h2 style={{ color }}>{data.num_rating}</h2>
               <small>We've ranked this article as...</small>
               <p style={{ color }}>{data.str_rating}</p>
@@ -133,6 +134,7 @@ class Article extends Component {
                 </div>
               </div>
               <small>{url}</small>
+              <br /><br />
             </div>
           )}
           { error && (
