@@ -7,6 +7,7 @@ app:
     - postgresql:postgresql
   volumes:
     - ./backend:/opt/app/backend
+    - ./frontend:/opt/app/frontend
   ports:
     - "5000:5000"
 
