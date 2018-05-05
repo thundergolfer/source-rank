@@ -8,3 +8,9 @@
 .sourcerank-item img {
   margin-right: 10px;
 }
+
+.sourcerank-item.reddit {
+  bottom: -20px;
+  right: 15px;
+  top: auto;
+}

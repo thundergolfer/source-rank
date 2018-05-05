@@ -19,6 +19,6 @@
   "content_scripts": [{
     "css": ["content-style.css"],
     "js": ["content.js"],
-    "matches": ["https://facebook.com/*", "https://www.facebook.com/*"]
+    "matches": ["https://facebook.com/*", "https://www.facebook.com/*", "https://www.reddit.com/*"]
   }]
 }
