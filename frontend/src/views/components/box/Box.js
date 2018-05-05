@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, oneOf, number, oneOfType, node, bool } from 'prop-types';
+import { string, oneOf, number, oneOfType, node, bool, any } from 'prop-types';
 
 const colours = {
   white: '#FFF',
@@ -11,7 +11,9 @@ const Box = ({
   width,
   height,
   display,
-  flex,
+  flexGrow,
+  flexBasis,
+  flexShrink,
   justifyContent,
   alignItems,
   margin,
@@ -40,7 +42,9 @@ const Box = ({
     width,
     height,
     display,
-    flex,
+    flexBasis,
+    flexGrow,
+    flexShrink,
     justifyContent,
     alignItems,
     margin,
@@ -146,6 +150,9 @@ Box.propTypes = {
   borderSize: number,
   borderColor: string,
   borderStyle: string,
+  flexBasis: any,
+  flexShrink: any,
+  flexGrow: any,
 };
 
 export default Box;
