@@ -2,13 +2,13 @@
 import logger from './logger';
 import FB from './fb';
 import getURLs from 'get-urls';
-import exampleData from './example/example-data';
+import SourceRank from './source-rank';
 
 /* Define a list of messages that trigger an introduction */
 const INTRODUCTION_TRIGGER_PHRASES = [ 'hey', 'hi', 'help', 'how', '?' ];
 
 class Messages {
-  processMessage( data ) {
+  async processMessage( data ) {
     /* Get all of the key info */
     const { sender, message } = data;
 
@@ -26,7 +26,16 @@ class Messages {
 
     /* If we've got some URLs tell the user that we are processing them */
     if ( urls.size ) {
-      FB.sendMessage( sender.id, `Hold tight! We are ranking ${urls.length > 1 ? 'all the links you sent us now' : 'the link'} now, we'll be back in a sec.` );
+      await FB.sendMessage( sender.id, `Hold tight! We are ranking ${urls.length > 1 ? 'all the links you sent us now' : 'the link'} now, we'll be back in a sec.` );
+
+      /* Loop through all the links sent and send back the ranking */
+      urls.forEach( async url => {
+        /* Get the ranking for this site */
+        const ranking = await SourceRank.getFormattedRanking( url );
+
+        /* Send back the ranking */
+        FB.sendMessage( sender.id, ranking );
+      });
       return;
     }
 
