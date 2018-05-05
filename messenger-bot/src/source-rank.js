@@ -1,4 +1,4 @@
-import exampleData from './example/example-data';
+import axios from 'axios';
 
 class SourceRank {
   async getFormattedRating( url ) {
@@ -14,8 +14,13 @@ class SourceRank {
   }
 
   async getRating( url ) {
-    /* For now simply return the example data */
-    return exampleData;
+    let result = null;
+    try {
+      const response = await axios.post( 'http://www.sourcerank.org/api/article', { url });
+      result = response.data;
+    } catch ( e ) { /* Do nothing */ }
+
+    return result;
   }
 }
 
