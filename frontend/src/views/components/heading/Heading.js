@@ -43,10 +43,13 @@ const Heading = ({
       {...restProps}
       element={element}
       styleName={cx(
+        'element',
         color,
       )}
     >
-      {children}
+      <span styleName="underline">
+        {children}
+      </span>
     </CreateElement>
   );
 };
