@@ -7,13 +7,13 @@ name = "pypi"
 
 [packages]
 
-Flask = "*"
+flask = "*"
 gunicorn = "*"
-Flask-RESTful = "*"
+flask-restful = "*"
 "psycopg2-binary" = "*"
-Flask-SQLAlchemy = "*"
+flask-sqlalchemy = "*"
 alembic = "*"
-Flask-Migrate = "*"
+flask-migrate = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 "newspaper3k" = "*"

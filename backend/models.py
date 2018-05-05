@@ -44,13 +44,6 @@ article_authors = db.Table(
 )
 
 
-class ArticleReport(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String(512), unique=True, nullable=False)
-    str_rating = db.Column(db.String(128), nullable=False)
-    num_rating = db.Column(db.Integer)
-
-
 class Article(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(256), unique=True, nullable=False)

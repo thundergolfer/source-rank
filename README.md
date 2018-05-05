@@ -6,16 +6,6 @@
 
 ----------
 
-**STATUS:** 'Backbone' of *ReactJS* front-end and *Flask* + *PostGreSQL* backend is up on Heroku at app `facebook-hack-2018`.
-
-**NEXT STEPS:**
-
-1.  Invite collaborators to the Heroku app
-2. Scope out the front-end work
-3. Find a topic-modelling API
-
-----------
-
 ## Overview
 
 This project:
@@ -39,10 +29,6 @@ Install the front-end with [`yarn`](https://yarnpkg.com/lang/en/) by running `ya
 3. You need to run `export DATABASE_URL=postgresql://localhost/$(whoami) && export FLASK_APP=./app.py` (for Windows use `set` not `export`)
 4. Run `flask db init`
 
-#### Messenger Bot
-
-Install with [`yarn`](https://yarnpkg.com/lang/en/) by running `yarn`.
-
 #### Deployment
 
 To deploy the app, you'll need Heroku set up.
@@ -56,7 +42,7 @@ To deploy the app, you'll need Heroku set up.
 
 ##### Back-End
 
-`python app.py`
+`python backend/app.py`
 
 ##### Front-end
 
