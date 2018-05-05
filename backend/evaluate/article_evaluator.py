@@ -2,6 +2,7 @@ from math import floor
 
 from backend.util import my_url_normalizer
 from backend.models import Publication
+from backend.models import Article
 from backend.models import ArticleReport
 from backend.evaluate.heuristics.core import HeuristicScore
 
@@ -9,6 +10,7 @@ from backend.evaluate.heuristics.is_pro_science import score_publication as is_p
 from backend.evaluate.heuristics.trust_the_experts import score_publication as trust_the_experts_scorer
 from backend.evaluate.heuristics.has_subscription_model import score_publication as has_subscription_model_scorer
 from backend.evaluate.heuristics.avoid_highly_biased import score_publication as avoid_highly_biased_scorer
+from backend.evaluate.heuristics.avoid_liars import score_publication as avoid_liars_scorer
 
 MAP_SCORE_TO_STR_RATING = {
     0: 'Block whoever wrote this',
@@ -38,6 +40,7 @@ class ArticleEvaluator():
         evaluation['is-pro-science'] = is_pro_science_scorer(publication)
         evaluation['has-subscription-revenue'] = has_subscription_model_scorer(publication)
         evaluation['avoid_highly_biased'] = avoid_highly_biased_scorer(publication)
+        evaluation['avoid_liars'] = avoid_liars_scorer(publication)
 
         score = 0
         num_heuristics_evaluated = 0
@@ -59,4 +62,8 @@ class ArticleEvaluator():
     @classmethod
     def _get_associated_publication(cls, url):
         domain = my_url_normalizer(url)
-        return Publication.query.filter_by(domain=domain).first()
+        return Publication.query.filter_by(domain=domain).first()@classmethod
+
+    @classmethod
+    def _get_associated_article(cls, url):
+        return Article.query.filter_by(url=url).first()
