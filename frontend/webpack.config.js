@@ -5,7 +5,7 @@ const src = path.resolve( __dirname, './src' );
 const dist = path.resolve( __dirname, './dist' );
 
 module.exports = {
-  entry: src + '/index.js',
+  entry: `${src}/index.js`,
   output: {
     filename: 'bundle.js',
     path: dist,
@@ -42,7 +42,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 8192
+              limit: 8192,
             },
           },
         ],

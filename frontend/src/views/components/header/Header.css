@@ -10,6 +10,8 @@
 
 .logo {
   height: 90px;
+  position: relative;
+  top: 20px;
 }
 
 .list {

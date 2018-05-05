@@ -1,11 +1,11 @@
 import './Header.css';
 import React from 'react';
-import { SvgLogo } from 'views/components/svg';
+import { Logo } from 'views/components';
 
 const Header = () => (
   <div styleName="wrapper">
     <div>
-      <SvgLogo styleName="logo" />
+      <Logo styleName="logo" round />
     </div>
 
     <div>

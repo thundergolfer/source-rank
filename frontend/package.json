@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "babel-plugin-react-css-modules": "^3.4.0",
+    "classnames": "^2.2.5",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
