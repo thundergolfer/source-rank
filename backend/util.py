@@ -21,7 +21,7 @@ def my_url_normalizer(url):
 
 
 def componentise_database_url():
-    url = urlparse.urlparse(os.environ['DATABASE_URL'])
+    url = urlparse(os.environ['DATABASE_URL'])
     dbname = url.path[1:]
     user = url.username
     password = url.password
