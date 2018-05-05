@@ -38,7 +38,8 @@ This project:
 
 #### Messenger Bot
 
-Install with [`yarn`](https://yarnpkg.com/lang/en/) by running `yarn`.
+1. `cd messenger-bot`
+2. Install with [`yarn`](https://yarnpkg.com/lang/en/) by running `yarn`.
 
 #### Deployment
 
@@ -46,6 +47,13 @@ To deploy the app, you'll need Heroku set up.
 
 1. Get the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) if you don't already have it.
 2. You will need to [get added as a collaborator](https://devcenter.heroku.com/articles/collaborating) to the app.
+
+### Messenger Bot
+
+1. `cd messenger-bot`
+2. (FIRST TIME ONLY) `now switch source-rank`
+3. `yarn run deploy`
+4. Check `sourcerank-fb-messenger-bot.now.sh` (latest deployment)
 
 ## Development
 
@@ -60,6 +68,10 @@ To deploy the app, you'll need Heroku set up.
 1. `cd frontend/`
 
 2. `yarn run start`
+
+##### Messenger bot
+
+1. `yarn run start`
 
 #### Migrations
 
