@@ -21,6 +21,20 @@ class Api {
       url: 'methodology/heuristics',
     });
   }
+
+  getPublications() {
+    return this.call({
+      method: 'get',
+      url: 'publications',
+    });
+  }
+
+  getPublicationRankings( heuristicId ) {
+    return this.call({
+      method: 'get',
+      url: `publications/rank?heuristic=${heuristicId}`,
+    });
+  }
 }
 
 export default new Api();

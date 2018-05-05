@@ -3,9 +3,11 @@ import { func, object } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
+import axios from 'axios';
+import { Api } from 'utils';
 import { fetchMethodologyHeuristics, selectMethodologyHeuristic } from 'flux/actions';
 import Layout from 'views/layout';
-import { Heading, Box, Dropdown, Button, Icon } from 'views/components';
+import { Heading, Box, Dropdown, Button, Icon, Underline } from 'views/components';
 
 class Home extends Component {
   static propTypes = {
@@ -14,8 +16,59 @@ class Home extends Component {
     selectMethodologyHeuristic: func,
   }
 
+  state = {
+    fetchingPublications: false,
+    fetchingRankings: false,
+    fetchedPublications: false,
+    fetchedRankings: false,
+    error: null,
+    publications: [],
+    rankings: [],
+  }
+
   componentDidMount() {
     this.props.fetchMethodologyHeuristics();
+
+    this.fetchPublications();
+  }
+
+  componentDidUpdate( prevProps ) {
+    if ( prevProps.methodology.heuristics.active !== this.props.methodology.heuristics.active )
+      this.fetchPublicationRankings();
+  }
+
+  fetchPublications = async () => {
+    this.setState({ fetchingPublications: true });
+
+    try {
+      const { data } = await Api.getPublications();
+
+      this.setState({ publications: data });
+    }
+    catch ( error ) {
+      this.setState({ error });
+    }
+    finally {
+      this.setState({ fetchingPublications: false });
+    }
+  }
+
+  fetchPublicationRankings = async () => {
+    const { active } = this.props.methodology.heuristics;
+
+    this.setState({ fetchingRankings: true });
+
+    try {
+      const { data } = await Api.getPublicationRankings( active );
+
+      this.setState({ rankings: data });
+    }
+    catch ( error ) {
+      this.setState({ error });
+    }
+    finally {
+      this.setState({ fetchingRankings: false });
+    }
   }
 
   handleChange = item => {
@@ -24,10 +77,13 @@ class Home extends Component {
 
   render() {
     const { heuristics } = this.props.methodology;
+    const { fetchingPublications, fetchingRankings, rankings, publications, error } = this.state;
     const heuristicsData = (
       heuristics.fetched &&
       Object.keys( heuristics.data ).map( heuristic => heuristics.data[heuristic] )
     );
+
+    console.log( this.state );
 
     return (
       <Layout
@@ -175,10 +231,98 @@ class Home extends Component {
 
           <p>
             News and media content sites ranked according to the heuristic:&nbsp;
-            {heuristicsData
-              ? heuristicsData[heuristics.active].name
-              : 'No heuristic selected!'}
+            <Underline
+              color="purple"
+              style={{
+                fontWeight: 'bold',
+                marginLeft: 10,
+              }}
+            >
+              {heuristics.data[heuristics.active]
+                ? heuristics.data[heuristics.active].name
+                : 'No heuristic selected!'}
+            </Underline>
           </p>
+
+          <Box
+            marginTop={40}
+            marginBottom={40}
+          >
+            {(
+              fetchingPublications ||
+              fetchingRankings
+            ) ? (
+              <p>Loading...</p>
+            ) : (
+              error ? (
+                <p>Error!</p>
+              ) : (
+                publications.length > 0 ? (
+                  publications
+                    .slice( 0, 100 )
+                    .map( publication => {
+                      const { rank } = rankings.publications.find( pub => pub.id === publication.id );
+                      const color = ( rank >= 8 ) ? '#2ecc71' // Green
+                        : ( rank >= 5 ) ? '#f39c12' // Orange
+                        : '#e74c3c'; // Red
+
+                      console.log({ rank, color }); // eslint-disable-line no-console
+
+                      return (
+                        <Box
+                          key={publication.id}
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="space-between"
+                          borderColor={color}
+                          borderSize={2}
+                          softEdges
+                          marginBottom={15}
+                          padding={15}
+                        >
+                          <Box
+                            display="flex"
+                            alignItems="center"
+                          >
+                            <p
+                              style={{
+                                margin: 0,
+                                marginLeft: 10,
+                                marginRight: 20,
+                                fontSize: '2rem',
+                                color,
+                              }}
+                            >
+                              {rank}.
+                            </p>
+                            <p
+                              style={{
+                                margin: 0,
+                                fontSize: '1.5rem',
+                              }}
+                            >
+                              {publication.name}
+                            </p>
+                          </Box>
+
+                          <img
+                            src={publication.icon_url}
+                            style={{
+                              height: 50,
+                              width: 50,
+                              border: '1px solid #DDD',
+                            }}
+                          />
+                        </Box>
+                      );
+                    })
+                  ) : (
+                    <p>No publications to show</p>
+                  )
+                )
+              )
+            }
+          </Box>
         </Box>
       </Layout>
     );
