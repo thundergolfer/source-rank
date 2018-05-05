@@ -29,6 +29,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "get-urls": "^7.2.0",
-    "nodemon": "^1.17.3"
+    "nodemon": "^1.17.3",
+    "winston": "^3.0.0-rc0"
   }
 }
