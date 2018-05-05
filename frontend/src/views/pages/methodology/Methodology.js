@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Heading, Box, Dropdown, Button, Icon } from 'views/components';
+import Layout from 'views/layout';
 
 class Methodology extends Component {
   static propTypes = {
@@ -26,28 +27,58 @@ class Methodology extends Component {
     console.log(heuristicsData);
 
     return (
-      <div>
-        <h1>Methodology</h1>
-        {(
-          heuristicsData &&
-          heuristicsData.length > 0
-        ) && heuristicsData.map(( item, index ) => (
+      <Layout
+        backgroundWaves
+        container
+        header
+      >
+        <Box
+          display="flex"
+          marginTop={50}
+          marginX={100}
+        >
           <Box
-            key={item.id}
-            padding={10}
+            flexGrow={1}
+            flexBasis={0}
+            marginTop={20}
+            marginRight={50}
           >
-            <p style={{ margin: 0 }}>
-              {item.name}
-            </p>
-            <p style={{ margin: 0 }}>
-              {item.description}
-            </p>
+            <Box marginBottom={40}>
+              <Heading
+                size="lg"
+                color="white"
+              >
+                Our Heuristics
+              </Heading>
+            </Box>
           </Box>
-        ))}
-        <Link to="/">
-          <p>Home</p>
-        </Link>
-      </div>
+        </Box>
+        <Box marginBottom={50} >
+          {(
+            heuristicsData &&
+            heuristicsData.length > 0
+          ) && heuristicsData.map(( item, index ) => (
+            <Box
+              key={item.id}
+              padding={10}
+              backgroundColor="white"
+              borderSize={2}
+              borderColor="purple"
+              softEdges
+              width={'97%'}
+              padding={10}
+              marginTop={10}
+            >
+              <h2 style={{ margin: 0 }}>
+                {item.name}
+              </h2>
+              <div style={{ margin: 0 }}>
+                <ReactMarkdown source={item.description} />
+              </div>
+            </Box>
+          ))}
+        </Box>
+      </Layout>
     );
   }
 }
