@@ -1,0 +1,36 @@
+{
+  "name": "source-rank",
+  "scripts": {
+  },
+  "env": {
+    "FLASK_APP": {
+      "required": true
+    }
+  },
+  "formation": {
+    "upgrade": {
+      "quantity": 1,
+      "size": "Standard-1X"
+    },
+    "migrate": {
+      "quantity": 1,
+      "size": "Standard-1X"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "Standard-1X"
+    },
+    "web": {
+      "quantity": 1,
+      "size": "Standard-1X"
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
