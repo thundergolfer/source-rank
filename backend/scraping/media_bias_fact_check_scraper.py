@@ -6,7 +6,7 @@ import os
 import psycopg2
 from bs4 import BeautifulSoup
 
-from backend.util import my_url_normalizer
+from backend.util import my_url_normalizer, componentise_database_url
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -109,11 +109,16 @@ def update_publication_pro_science(pub_domain, pub_name, pro_science):
     try:
         # read database configuration
         # connect to the PostgreSQL database
-        connect_str = "dbname='{}' user='{}' host='localhost' ".format(
-            os.environ['USER'],
-            os.environ['USER']
-        )
-        conn = psycopg2.connect(connect_str)
+        if 'USER' in os.environ:
+            connect_str = "dbname='{}' user='{}' host='localhost' ".format(
+                os.environ['USER'],
+                os.environ['USER']
+            )
+            conn = psycopg2.connect(connect_str)
+        else:
+            conn = psycopg2.connect(
+                **componentise_database_url()
+            )
         # create a new cursor
         cur = conn.cursor()
         # execute the INSERT statement
@@ -139,11 +144,16 @@ def update_publication_bias_level(pub_domain, pub_name, bias_level):
     try:
         # read database configuration
         # connect to the PostgreSQL database
-        connect_str = "dbname='{}' user='{}' host='localhost' ".format(
-            os.environ['USER'],
-            os.environ['USER']
-        )
-        conn = psycopg2.connect(connect_str)
+        if 'USER' in os.environ:
+            connect_str = "dbname='{}' user='{}' host='localhost' ".format(
+                os.environ['USER'],
+                os.environ['USER']
+            )
+            conn = psycopg2.connect(connect_str)
+        else:
+            conn = psycopg2.connect(
+                **componentise_database_url()
+            )
         # create a new cursor
         cur = conn.cursor()
         # execute the INSERT statement
