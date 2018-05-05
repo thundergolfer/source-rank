@@ -1,3 +1,5 @@
+# Usage: python -m backend.scraping.media_bias_fact_check
+
 import logging
 import requests
 import os
