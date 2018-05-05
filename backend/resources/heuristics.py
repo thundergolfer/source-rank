@@ -8,7 +8,11 @@ from backend.evaluate.heuristics.core import ALL_HEURISTICS
 class Heuristics(Resource):
     def get(self):
         heuristics = [
-            {'name': x.motivator, 'description': x.description} for x in ALL_HEURISTICS
+            {
+                'name': x.motivator,
+                'description': x.description,
+                'key': x.key
+            } for x in ALL_HEURISTICS
         ]
 
         return heuristics
