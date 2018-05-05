@@ -1,4 +1,4 @@
-# Source Rank - Facebook Hackathon 2018 - [![Build Status](https://travis-ci.com/thundergolfer/source-rank.svg?token=yHGWQ42iK2BPk1FjaUMc&branch=master)](https://travis-ci.com/thundergolfer/source-rank)
+# Source Rank - Facebook Hackathon 2018 - [![Build Status](https://travis-ci.com/thundergolfer/source-rank.svg?token=yHGWQ42iK2BPk1FjaUMc&branch=master)](https://travis-ci.com/thundergolfer/source-rank) [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/27e1e3bab7bc89016073)
 
 ----------
 
