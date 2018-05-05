@@ -23,5 +23,8 @@
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-mocha": "^4.11.0"
+  },
+  "dependencies": {
+    "get-urls": "^7.2.0"
   }
 }
