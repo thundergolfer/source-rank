@@ -34,7 +34,11 @@ This project:
 #### Frontend
 
 1. `cd frontend`
-2. Install the front-end with [`yarn`](https://yarnpkg.com/lang/en/) by running `yarn`.
+2. Install the front-end dependencies by running `npm install`.
+3. Run the project with:
+    - `npm start` - Runs a development server with hot reloading
+    - `npm run build` - Creates a `/dist` folder containing a minified bundle (`bundle.js`) and `index.html`
+    - `npm run serve` - Serves the `/dist` folder on an express server
 
 #### Backend
 
