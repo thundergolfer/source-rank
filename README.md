@@ -48,6 +48,10 @@ This project:
 1. `cd messenger-bot`
 2. Install with [`yarn`](https://yarnpkg.com/lang/en/) by running `yarn`.
 
+#### Chrome Extension
+
+`coming soon`
+
 ## Deployment
 
 To deploy the app, you'll need Heroku set up.
@@ -62,6 +66,10 @@ To deploy the app, you'll need Heroku set up.
 3. `yarn run deploy`
 4. Check `sourcerank-fb-messenger-bot.now.sh` (latest deployment)
 
+
+#### Chrome Extension
+
+`coming soon`
 
 #### Review Apps
 
@@ -86,6 +94,10 @@ For our Heroku provided ['review apps'](https://devcenter.heroku.com/articles/gi
 ##### Messenger bot
 
 1. `yarn run start`
+
+##### Chrome Extension
+
+`coming soon`
 
 #### Migrations
 

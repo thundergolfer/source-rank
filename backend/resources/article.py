@@ -25,7 +25,14 @@ class Article(Resource):
             )
             return response
 
-        report, heuristic_scores = ArticleEvaluator.evaluate(url)
+        try:
+            report, heuristic_scores = ArticleEvaluator.evaluate(url)
+        except ValueError:
+            return Response(
+                response=json.dumps(dict(error='article publisher not in dataset')),
+                status=400, mimetype='application/json'
+            )
+
         dict_report = article_report_schema.dump(report).data
 
         return {**dict_report, **heuristic_scores}

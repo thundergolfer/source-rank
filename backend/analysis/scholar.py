@@ -23,14 +23,12 @@ def find_areas_of_academic_study(author_name, db):
     search_results = scholarly.search_author(author_name)
 
     areas = []
-    first_result = None
     for author in search_results:
-        if first_result is None:
-            first_result = author
+        # API is a fuzzy-match, we want exact match
+        if author.name.lower() != author_name:
+            continue
 
         areas.extend(author.interests)
-
-    # TODO: Add first_result into DB
 
     return areas
 

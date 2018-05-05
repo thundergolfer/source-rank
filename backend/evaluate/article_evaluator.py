@@ -13,7 +13,7 @@ from backend.evaluate.heuristics.avoid_highly_biased import score_publication as
 MAP_SCORE_TO_STR_RATING = {
     0: 'Block whoever wrote this',
     1: 'Pure shit',
-    2: 'Straigh up trash',
+    2: 'Straight up trash',
     3: 'Pretty dubious',
     4: 'Don\'t bother',
     5: 'We\'d be skeptical',
@@ -23,6 +23,7 @@ MAP_SCORE_TO_STR_RATING = {
     9: 'Excellent',
     10: 'Perfect',
 }
+
 
 class ArticleEvaluator():
     @classmethod
