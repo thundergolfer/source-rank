@@ -4,12 +4,22 @@ class SourceRank {
   async getFormattedRating( url ) {
     /* Get the rating data for this url */
     const rating = await this.getRating( url );
+
+    if ( !rating ) {
+      return null;
+    }
+
     return `The results are in! We give this site a ${rating.num_rating} (${rating.str_rating})`;
   }
 
   async getDetailedRating( url ) {
     /* Get the rating data for this url */
     const rating = await this.getRating( url );
+
+    if ( !rating ) {
+      return null;
+    }
+  
     return { text: `The results are in! We give this site a ${rating.num_rating} (${rating.str_rating})`, rating: rating.num_rating };
   }
 

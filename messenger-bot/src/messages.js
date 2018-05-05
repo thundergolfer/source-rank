@@ -33,6 +33,11 @@ class Messages {
         /* Get the ranking for this site */
         const rating = await SourceRank.getDetailedRating( url );
 
+        if ( !rating ) {
+          FB.sendMessage( sender.id, 'Sorry! We can\'t process that link as it doesn\'t look like it\'s an article. We\'ll try harder next time!' );
+          return;
+        }
+
         /* Send back the ranking */
         FB.sendDetailedMessage( sender.id, rating.rating, rating.text );
       });
@@ -57,7 +62,7 @@ class Messages {
     * From | The number of the person who sent the message (in E164 format)
     * To | The number this SMS was received on
     */
-    const { Body, From, To } = data;
+    const { Body, From } = data;
 
     /* Log the received message */
     logger.info( `Message from ${From} - ${Body}` );
@@ -72,6 +77,10 @@ class Messages {
     if ( urls.size ) {
       /* Get the ranking for this site */
       const rating = await SourceRank.getFormattedRating( urls[0] );
+
+      if ( !rating ) {
+        return 'Hmm... that doesn\'t look like a link. To use SourceRank simply send us a URL and we\'ll rank it for you!';
+      }
 
       /* Send back the ranking */
       return rating;
