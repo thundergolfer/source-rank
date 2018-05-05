@@ -11,7 +11,7 @@ from backend.models import db
 from backend.settings import config
 
 
-static_folder = '../frontend/public/static'
+static_folder = '../frontend/dist'
 
 
 def initialise_app(app, marshmallow, sql_alchemy_db):

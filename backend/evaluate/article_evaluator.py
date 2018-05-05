@@ -8,6 +8,7 @@ from backend.evaluate.heuristics.core import HeuristicScore
 from backend.evaluate.heuristics.is_pro_science import score_publication as is_pro_science_scorer
 from backend.evaluate.heuristics.trust_the_experts import score_publication as trust_the_experts_scorer
 from backend.evaluate.heuristics.has_subscription_model import score_publication as has_subscription_model_scorer
+from backend.evaluate.heuristics.avoid_highly_biased import score_publication as avoid_highly_biased_scorer
 
 MAP_SCORE_TO_STR_RATING = {
     0: 'Block whoever wrote this',
@@ -36,6 +37,7 @@ class ArticleEvaluator():
         evaluation['trust-the-experts'] = trust_the_experts_scorer(publication)
         evaluation['is-pro-science'] = is_pro_science_scorer(publication)
         evaluation['has-subscription-revenue'] = has_subscription_model_scorer(publication)
+        evaluation['avoid_highly_biased'] = avoid_highly_biased_scorer(publication)
 
         score = 0
         num_heuristics_evaluated = 0

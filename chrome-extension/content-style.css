@@ -1,0 +1,21 @@
+.sourcerank-item {
+  position: absolute;
+  right: 40px;
+  top: 12px;
+  display: flex;
+}
+
+.sourcerank-item img {
+  margin-right: 10px;
+}
+
+.sourcerank-item.reddit {
+  bottom: -20px;
+  right: 15px;
+  top: auto;
+}
+
+.sourcerank-item.google {
+  right: -37px;
+  top: 0;
+}
