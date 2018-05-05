@@ -22,7 +22,7 @@ ALL_HEURISTICS = [
         HeuristicID.TRUST_EXPERTS,
         'trust-the-experts',
         'I trust in experts',
-        'In order to gain the best information on topics such as economics, politics, philosophy, biology etc turn to the experts on those fields, who dedicate themselves to specialising in complex problem domains. So in order honor this information-quality heuristic, we evaluate publication on the basis of how many academics contribute to the publication. Use this heuristic is you care that a publishers has experts contributing to their publication, and not amateurs.'
+        'In order to gain the best information on topics such as economics, politics, philosophy, biology etc turn to the experts on those fields, who dedicate themselves to specialising in complex problem domains. So in order honor this information-quality heuristic, we evaluate publication on the basis of how many academics contribute to the publication. Use this heuristic is you care that a publishers has experts contributing to their publication, and not amateurs.\n\n### See The Code \n\n https://github.com/thundergolfer/source-rank/blob/master/backend/evaluate/heuristics/trust_the_experts.py'
     ),
     Heuristic(
         HeuristicID.PRO_SCIENCE,
