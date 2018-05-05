@@ -1,6 +1,6 @@
 import './Header.css';
 import React from 'react';
-import { Logo } from 'views/components';
+import { Logo, Link } from 'views/components';
 
 const Header = () => (
   <div styleName="wrapper">
@@ -14,7 +14,7 @@ const Header = () => (
           <li>Check an article</li>
           <li>FB Messenger</li>
           <li>Methodology</li>
-          <li>Source Code</li>
+          <li><Link to='https://github.com/thundergolfer/source-rank' external>See The Code</Link></li>
         </ul>
       </nav>
     </div>
