@@ -45,6 +45,7 @@ const Box = ({
   left,
   right,
   bottom,
+  textAlign,
   ...restProps
 }) => {
   const styles = {
@@ -80,6 +81,7 @@ const Box = ({
     left,
     right,
     bottom,
+    textAlign,
     ...borderSize && {
       borderSize,
       borderStyle,
@@ -198,6 +200,7 @@ Box.propTypes = {
   bottom: oneOfType(
     [number, string]
   ),
+  textAlign: string,
 };
 
 export default Box;

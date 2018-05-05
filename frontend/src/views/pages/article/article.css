@@ -1,0 +1,38 @@
+.article-input {
+  padding: 20px;
+  font-family: 'Roboto';
+  width: 100%;
+  outline: 0;
+}
+
+.dataResult {
+  font-family: 'Roboto';
+}
+
+.dataResult h2 {
+  font-size: 7em;
+  margin-bottom: 18px;
+}
+
+.dataResult p {
+  font-size: 2em;
+}
+
+.dataResult small {
+  font-size: 1.5em;
+}
+
+.resultError {
+  color: red;
+  font-family: 'Roboto';
+  font-size: 2.1em;
+}
+
+.scoresData {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.scoresData div {
+  margin-bottom: 20px;
+}
