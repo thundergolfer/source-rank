@@ -2,6 +2,7 @@ const path = require( 'path' );
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
 const src = path.resolve( __dirname, './src' );
+const dist = path.resolve( __dirname, './dist' );
 
 module.exports = {
   entry: src + '/index.js',
@@ -30,5 +31,10 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
     modules: [src, 'node_modules'],
+  },
+  devServer: {
+    port: process.env.PORT || 3000,
+    contentBase: dist,
+    historyApiFallback: true,
   },
 };
