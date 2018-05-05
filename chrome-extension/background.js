@@ -28,14 +28,26 @@ chrome.tabs.onActivated.addListener( activeInfo => {
 });
 
 async function getRating( url ) {
-  return { num_rating: Math.round( Math.random() * 10 ), str_rating: "'A' grade" };
+  let result = { valid: false };
+
+  try {
+    result = await fetch( 'http://www.sourcerank.org/api/article', { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url }) });
+    if ( result.ok ) {
+      result = await result.json();
+      result.valid = true;
+    } else {
+      result = { valid: false };
+    }
+  } catch ( e ) { /* Do nothing */ }
+
+  return result;
 }
 
 function updateBadge() {
   /* Get the rating for the current tab */
   const rating = tabRatings[ activeTab ];
 
-  if ( rating ) {
+  if ( rating && rating.valid ) {
     /* Alter the badge on the extension */
     chrome.browserAction.setBadgeText( { text: rating.num_rating.toString() } );
 
