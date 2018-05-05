@@ -31,10 +31,10 @@ class Messages {
       /* Loop through all the links sent and send back the ranking */
       urls.forEach( async url => {
         /* Get the ranking for this site */
-        const ranking = await SourceRank.getFormattedRanking( url );
+        const rating = await SourceRank.getDetailedRating( url );
 
         /* Send back the ranking */
-        FB.sendMessage( sender.id, ranking );
+        FB.sendDetailedMessage( sender.id, rating.rating, rating.text );
       });
       return;
     }
