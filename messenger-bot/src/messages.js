@@ -76,10 +76,10 @@ class Messages {
     /* If we've got some URLs tell the user that we are processing them */
     if ( urls.size ) {
       /* Get the ranking for this site */
-      const rating = await SourceRank.getFormattedRating( urls[0] );
+      const rating = await SourceRank.getFormattedRating( urls.values().next().value );
 
       if ( !rating ) {
-        return 'Hmm... that doesn\'t look like a link. To use SourceRank simply send us a URL and we\'ll rank it for you!';
+        return 'Sorry! We can\'t process that link as it doesn\'t look like it\'s an article. We\'ll try harder next time!';
       }
 
       /* Send back the ranking */
