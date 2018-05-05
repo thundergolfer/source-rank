@@ -6,7 +6,7 @@ import './link.css';
 const Link = ({ to, children, external, ...restProps }) => {
   if ( external ) {
     return (
-      <a {...restProps} href={to} styleName='link'>
+      <a {...restProps} href={to} styleName='link' target="_blank">
         {children}
       </a>
     )
