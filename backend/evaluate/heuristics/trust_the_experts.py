@@ -17,6 +17,8 @@ def score_publication(publication):
                 academic_authors += 1
                 print(author.name)
 
+    if total_authors <= 0:
+        return HeuristicScore.min()
     percentage_academic = academic_authors / total_authors
 
     # very ugly, but implements a mapping from a percentage to a 0-10 scale
