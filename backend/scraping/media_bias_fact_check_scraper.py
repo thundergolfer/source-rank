@@ -161,6 +161,10 @@ def update_publication_bias_level(pub_domain, pub_name, bias_level):
     return vendor_id
 
 
+def run_media_bias_scraping():
+    get_pro_science_publications()
+    scrape_biased_publications()
+
+
 if __name__ == '__main__':
-    # res = scrape_biased_publications()
-    res = get_pro_science_publications()
+    run_media_bias_scraping()

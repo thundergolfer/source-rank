@@ -3,10 +3,16 @@
 import logging
 from time import sleep
 
+from backend.scraping.media_bias_fact_check_scraper import run_media_bias_scraping
+
+ONE_HOUR = 60 * 60
+HALF_HOUR = ONE_HOUR // 2
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
     while True:
         logger.info("I am running")
-        sleep(10)
+        run_media_bias_scraping()
+        sleep(HALF_HOUR)
