@@ -6,13 +6,9 @@
 
 ----------
 
-**STATUS:** 'Backbone' of *ReactJS* front-end and *Flask* + *PostGreSQL* backend is up on Heroku at app `facebook-hack-2018`.
+## USEFUL STUFF
 
-**NEXT STEPS:**
-
-1.  Invite collaborators to the Heroku app
-2. Scope out the front-end work
-3. Find a topic-modelling API
+* **Google Drive Assets** - https://drive.google.com/open?id=1ZpnoNeRRa7MEpIqcvVNDGo1WPLLD7oBR
 
 ----------
 
