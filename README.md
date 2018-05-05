@@ -26,14 +26,15 @@ This project:
 
 #### Frontend
 
-Install the front-end with [`yarn`](https://yarnpkg.com/lang/en/) by running `yarn`.
+1. `cd frontend`
+2. Install the front-end with [`yarn`](https://yarnpkg.com/lang/en/) by running `yarn`.
 
 #### Backend
 
 1. Back-end Python dependencies are managed by [`pipenv`](https://github.com/pypa/pipenv). Do `pipenv install --dev` to install everything.
 2. [Install PostGreSQL](https://www.postgresql.org/download/) for local development.
 3. You need to run `export DATABASE_URL=postgresql://localhost/$(whoami) && export FLASK_APP=./app.py` (for Windows use `set` not `export`)
-4. Run `flask db init`
+4. ~~Run `flask db init`~~ (probably don't want to do this)
 
 #### Messenger Bot
 
