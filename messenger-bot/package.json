@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/thundergolfer/facebook-hackathon-2018",
   "scripts": {
-    "start": "nodemon dist/index.js",
+    "start": "node dist/index.js",
     "build": "rimraf dist/ && babel ./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "dev": "nodemon --ignore dist/ --exec babel-node -- ./src/index.js"
   },
@@ -25,6 +25,7 @@
     "eslint-plugin-mocha": "^4.11.0"
   },
   "dependencies": {
-    "get-urls": "^7.2.0"
+    "get-urls": "^7.2.0",
+    "nodemon": "^1.17.3"
   }
 }
