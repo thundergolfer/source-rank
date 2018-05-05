@@ -1,10 +1,6 @@
-language: python
-python:
-	- "3.6"
+init:
+	pip install pipenv
+	pipenv install --dev
 
-# command to install dependencies
-install: "make"
-
-# command to run tests
-script:
-	- make test
+test:
+	pipenv run python -m pytest tests/
