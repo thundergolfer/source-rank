@@ -90,6 +90,46 @@ function checkReddit() {
   }, 2000);
 }
 
+function checkGoogle() {
+  setInterval(() => {
+    console.log( 'Checking Google' );
+    const links = document.querySelectorAll( '.rc .r a' );
+
+    for ( let i = 0; i < links.length; i++ ) {
+      const link = links[i].href;
+      const card = links[i].parentElement;
+
+      if ( !foundLinks[ link ] && link.includes( 'http' )) {
+        foundLinks[ link ] = true;
+
+        getURLRanking( link, rating => {
+          sourceRankLinkRatings[ link ] = rating;
+
+          /* Calculate a colour for the rating */
+          const ratingValue = rating.num_rating;
+          let color = "#2ecc71"; /* Green */
+
+          if ( ratingValue < 8 ) {
+            color = "#f39c12"; /* Orange */
+          }
+
+          if ( ratingValue < 5 ) {
+            color = "#e74c3c"; /* Red */
+          }
+
+          /* Create a new div */
+          const div = document.createElement('div');
+          div.innerHTML = `<img src="https://imgur.com/OSOrDMa.png" height="15px" /> ${ratingValue}`;
+          div.className = 'sourcerank-item google';
+          div.style.color = color;
+
+          card.appendChild( div );
+        });
+      }
+    }
+  }, 2000);
+}
+
 function getURLRanking( url, callback ) {
   callback({ num_rating: Math.round( Math.random() * 10 ), str_rating: "'A' grade" });
 }
@@ -100,4 +140,11 @@ if ( window.location.hostname.includes( 'facebook' )) {
 
 if ( window.location.hostname.includes( 'reddit' )) {
   checkReddit();
+}
+
+console.log( window.location.hostname );
+
+if ( window.location.hostname.includes( 'google.com' )) {
+  console.log( 'Google' );
+  checkGoogle();
 }
