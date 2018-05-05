@@ -3,6 +3,8 @@ import { bool, node } from 'prop-types';
 import Container from './container';
 import Header from './header';
 import Floaty from '../components/floaty';
+import Link from '../components/Link';
+import MessengerLogo from '../components/svg/messenger';
 
 const Layout = ({
   backgroundWaves = false,
@@ -37,7 +39,13 @@ const Layout = ({
         ? <Container>{children}</Container>
         : children
       }
-      <Floaty>Hello People</Floaty>
+      <Floaty>
+        <div>
+          <strong>Try our</strong> <Link to='https://www.messenger.com/t/166585247361466' external><strong>Messenger Bot!</strong></Link>
+          <MessengerLogo></MessengerLogo>
+        </div>
+        <p>Use it to check articles as you browse Facebook</p>
+      </Floaty>
     </div>
   );
 };
