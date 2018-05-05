@@ -40,11 +40,13 @@ const Layout = ({
         : children
       }
       <Floaty>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-          <div><strong>Try our</strong> <Link to='https://www.messenger.com/t/166585247361466' external><strong>Messenger Bot!</strong></Link></div>
-          <MessengerLogo></MessengerLogo>
-        </div>
-        <p>Use it to check articles as you browse Facebook</p>
+        <Link to='https://www.messenger.com/t/166585247361466' external>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div><strong>Try our</strong> <strong>Messenger Bot!</strong></div>
+            <MessengerLogo />
+          </div>
+          <p style={{ paddingBottom: 10 }}>Use it to check articles as you browse Facebook</p>
+        </Link>
       </Floaty>
     </div>
   );
