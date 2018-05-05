@@ -31,8 +31,6 @@ class Publication(db.Model):
     subscription_revenue = db.Column(db.Boolean, unique=False, default=False)
     icon_url = db.Column(db.String(256), unique=False, nullable=True)
     articles = db.relationship('Article', backref='publication', lazy=True)
-    bias_level = db.Column(db.Integer, default=0)
-    pro_science = db.Column(db.Boolean, unique=False, default=False)
 
 
 article_authors = db.Table(
@@ -44,6 +42,13 @@ article_authors = db.Table(
         'author_id', db.Integer, db.ForeignKey('author.id'), primary_key=True
     )
 )
+
+
+class ArticleReport(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(512), unique=True, nullable=False)
+    str_rating = db.Column(db.String(128), nullable=False)
+    num_rating = db.Column(db.Integer)
 
 
 class Article(db.Model):
@@ -63,9 +68,3 @@ class Author(db.Model):
     # TODO: the uniqueness of a name is v. dubious
     name = db.Column(db.String(80), unique=True, nullable=False)
     areas_of_interest = db.Column(db.String(256), unique=False, nullable=True)
-
-
-class AuthorClaim(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    author_id = db.Column(db.Integer, db.ForeignKey('author.id'), nullable=False)
-    true = db.Column(db.Boolean, unique=False, default=True)
