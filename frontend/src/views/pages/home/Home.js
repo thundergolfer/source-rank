@@ -238,8 +238,8 @@ class Home extends Component {
                 marginLeft: 10,
               }}
             >
-              {heuristicsData
-                ? heuristicsData[heuristics.active].name
+              {heuristics.data[heuristics.active]
+                ? heuristics.data[heuristics.active].name
                 : 'No heuristic selected!'}
             </Underline>
           </p>
@@ -259,15 +259,14 @@ class Home extends Component {
               ) : (
                 publications.length > 0 ? (
                   publications
-                    .sort(( a, b ) => a.rank - b.rank )
                     .slice( 0, 100 )
-                    .map(( publication, index ) => {
+                    .map( publication => {
                       const { rank } = rankings.publications.find( pub => pub.id === publication.id );
                       const color = ( rank >= 8 ) ? '#2ecc71' // Green
                         : ( rank >= 5 ) ? '#f39c12' // Orange
                         : '#e74c3c'; // Red
 
-                        console.log({ rank, color }); // eslint-disable-line no-console
+                      console.log({ rank, color }); // eslint-disable-line no-console
 
                       return (
                         <Box
@@ -294,7 +293,7 @@ class Home extends Component {
                                 color,
                               }}
                             >
-                              {index + 1}.
+                              {rank}.
                             </p>
                             <p
                               style={{
