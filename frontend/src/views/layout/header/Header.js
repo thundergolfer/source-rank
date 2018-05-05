@@ -11,7 +11,7 @@ const Header = () => (
     <div>
       <nav>
         <ul styleName="list">
-          <li>Check an article</li>
+          <li><Link to='/article'>Check an article</Link></li>
           <li><Link to='https://www.messenger.com/t/166585247361466' external>FB Messenger</Link></li>
           <li>Methodology</li>
           <li><Link to='https://github.com/thundergolfer/source-rank' external>See The Code</Link></li>

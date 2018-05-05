@@ -11,6 +11,11 @@ const routes = [
     exact: true,
     component: Pages.About,
   },
+  {
+    path: '/article',
+    exact: true,
+    component: Pages.Article,
+  },
 ];
 
 export default routes;
