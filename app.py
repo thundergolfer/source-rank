@@ -10,7 +10,7 @@ app = create_app(ma, db)
 migrate = Migrate(app, db)
 
 
-@app.route('/', defaults={'path': ''})
+@app.route('/')
 @app.route('/about')
 @app.route('/privacy')
 @app.route('/terms')
