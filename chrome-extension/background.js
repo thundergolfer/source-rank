@@ -28,7 +28,7 @@ chrome.tabs.onActivated.addListener( activeInfo => {
 });
 
 async function getRating( url ) {
-  return { num_rating: Math.round( Math.random() * 10 )};
+  return { num_rating: Math.round( Math.random() * 10 ), str_rating: "'A' grade" };
 }
 
 function updateBadge() {
@@ -57,4 +57,8 @@ function updateBadge() {
 
   /* Clear the badge text */
   chrome.browserAction.setBadgeText( { text: '' } );
+}
+
+function getCurrentTabRating() {
+  return tabRatings[activeTab];
 }
