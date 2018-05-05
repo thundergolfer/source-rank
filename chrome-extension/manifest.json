@@ -15,5 +15,10 @@
   "background": {
     "scripts": ["background.js"],
     "persistent": false
-  }
+  },
+  "content_scripts": [{
+    "css": ["content-style.css"],
+    "js": ["content.js"],
+    "matches": ["https://facebook.com/*", "https://www.facebook.com/*"]
+  }]
 }

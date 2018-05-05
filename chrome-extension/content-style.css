@@ -1,0 +1,10 @@
+.sourcerank-item {
+  position: absolute;
+  right: 40px;
+  top: 12px;
+  display: flex;
+}
+
+.sourcerank-item img {
+  margin-right: 10px;
+}
