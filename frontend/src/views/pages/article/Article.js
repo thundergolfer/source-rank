@@ -79,6 +79,7 @@ class Article extends Component {
             flexBasis={0}
             marginTop={20}
             marginRight={50}
+            marginBottom={100}
           >
             <Box marginBottom={40}>
               <Heading
@@ -143,6 +144,10 @@ class Article extends Component {
             </div>
           )}
         </Box>
+
+        <Box
+          marginBottom={200}
+        />
       </Layout>
     );
   }
