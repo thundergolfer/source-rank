@@ -1,6 +1,13 @@
 # Source Rank - Facebook Hackathon 2018 - [![Build Status](https://travis-ci.com/thundergolfer/source-rank.svg?token=yHGWQ42iK2BPk1FjaUMc&branch=master)](https://travis-ci.com/thundergolfer/source-rank) [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/27e1e3bab7bc89016073)
 
-----------
+---------
+
+<p align="center">
+  <img src="./docs/repo-image.svg" height="200" />
+</p>
+
+
+---------
 
 **Newcomers**, see [the intro doc](docs/project_intro.md) to get an idea of what this project is about.
 
