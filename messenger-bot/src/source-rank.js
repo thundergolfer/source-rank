@@ -19,7 +19,7 @@ class SourceRank {
     if ( !rating ) {
       return null;
     }
-  
+
     return { text: `The results are in! We give this site a ${rating.num_rating} (${rating.str_rating})`, rating: rating.num_rating };
   }
 

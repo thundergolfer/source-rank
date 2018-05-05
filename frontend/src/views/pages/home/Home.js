@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
 import { fetchMethodologyHeuristics, selectMethodologyHeuristic } from 'flux/actions';
 import Layout from 'views/layout';
-import { Heading, Box, Dropdown } from 'views/components';
+import { Heading, Box, Dropdown, Button, Icon } from 'views/components';
 
 class Home extends Component {
   static propTypes = {
@@ -38,57 +38,96 @@ class Home extends Component {
         <Box
           display="flex"
           marginTop={50}
+          marginX={100}
         >
           <Box
-            flex={1}
+            flexGrow={1}
+            flexBasis={0}
             marginTop={20}
+            marginRight={50}
           >
-            <Heading
-              size="lg"
-              color="white"
-            >
-              Choose a news quality signal
-            </Heading>
+            <Box marginBottom={40}>
+              <Heading
+                size="lg"
+                color="white"
+              >
+                Choose a news quality signal
+              </Heading>
+            </Box>
 
             <Dropdown items={heuristicsData} onChange={this.handleChange}>
               {({ selectedIndex, onSelect, isOpen, onToggle }) => (
-                <div>
-                  <button
+                <Box
+                  position="relative"
+                >
+                  <Button
                     onClick={onToggle}
+                    color="white"
+                    width="100%"
                   >
-                    {(
-                      heuristicsData &&
-                      heuristicsData.length > 0
-                    )
-                      ? heuristicsData[selectedIndex].name
-                      : heuristics.fetching
-                        ? 'Loading...'
-                        : 'Failed to load heuristics.'}
-                  </button>
+                    <Box
+                      display="flex"
+                      justifyContent="space-between"
+                      alignItems="center"
+                      flexDirection="row"
+                      marginRight={10}
+                      marginLeft={10}
+                    >
+                      <Box marginRight={10}>
+                        {(
+                          heuristicsData &&
+                          heuristicsData.length > 0
+                        )
+                          ? heuristicsData[selectedIndex].name
+                          : heuristics.fetching
+                            ? 'Loading...'
+                            : 'Failed to load heuristics.'}
+                      </Box>
+
+                      <Icon
+                        name="expand_more"
+                        color="white"
+                      />
+                    </Box>
+                  </Button>
 
                   {(
                     isOpen &&
                     heuristicsData &&
                     heuristicsData.length > 0
                   ) && (
-                    <ul>
+                    <Box
+                      position="absolute"
+                      top="100%"
+                      left={0}
+                      width="100%"
+                      backgroundColor="white"
+                      borderSize={2}
+                      borderColor="purple"
+                      softEdges
+                      padding={10}
+                    >
                       {heuristicsData.map(( item, index ) => (
-                        <li
+                        <Box
                           key={item.id}
                           onClick={onSelect( index )}
+                          padding={10}
                         >
-                          {item.name}
-                        </li>
+                          <p style={{ margin: 0 }}>
+                            {item.name}
+                          </p>
+                        </Box>
                       ))}
-                    </ul>
+                    </Box>
                   )}
-                </div>
+                </Box>
               )}
             </Dropdown>
           </Box>
 
           <Box
-            flex={1}
+            flexGrow={1}
+            flexBasis={0}
           >
             <Box
               backgroundColor="white"
@@ -98,15 +137,18 @@ class Home extends Component {
               softEdges
               borderSize={2}
               borderColor="purple"
+              minHeight={300}
             >
-              <Heading
-                color="black"
-                size="lg"
-              >
-                {heuristics.active == null
-                  ? 'Select a heuristic!'
-                  : heuristics.data[heuristics.active].name}
-              </Heading>
+              <Box marginBottom={25}>
+                <Heading
+                  color="black"
+                  size="lg"
+                >
+                  {heuristics.active == null
+                    ? 'Select a heuristic!'
+                    : heuristics.data[heuristics.active].name}
+                </Heading>
+              </Box>
 
               <p>
                 {heuristics.active == null

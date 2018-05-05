@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, oneOf, number, oneOfType, node, bool } from 'prop-types';
+import { string, oneOf, number, oneOfType, node, bool, any } from 'prop-types';
 
 const colours = {
   white: '#FFF',
@@ -11,7 +11,9 @@ const Box = ({
   width,
   height,
   display,
-  flex,
+  flexGrow,
+  flexBasis,
+  flexShrink,
   justifyContent,
   alignItems,
   margin,
@@ -34,13 +36,24 @@ const Box = ({
   borderSize,
   borderColor,
   borderStyle = 'solid',
+  minHeight,
+  minWidth,
+  maxHeight,
+  maxWidth,
+  position,
+  top,
+  left,
+  right,
+  bottom,
   ...restProps
 }) => {
   const styles = {
     width,
     height,
     display,
-    flex,
+    flexBasis,
+    flexGrow,
+    flexShrink,
     justifyContent,
     alignItems,
     margin,
@@ -58,6 +71,15 @@ const Box = ({
     paddingBottom,
     padding,
     backgroundColor,
+    minHeight,
+    minWidth,
+    maxHeight,
+    maxWidth,
+    position,
+    top,
+    left,
+    right,
+    bottom,
     ...borderSize && {
       borderSize,
       borderStyle,
@@ -146,6 +168,36 @@ Box.propTypes = {
   borderSize: number,
   borderColor: string,
   borderStyle: string,
+  flexBasis: any,
+  flexShrink: any,
+  flexGrow: any,
+  minHeight: oneOfType(
+    [number, string]
+  ),
+  minWidth: oneOfType(
+    [number, string]
+  ),
+  maxHeight: oneOfType(
+    [number, string]
+  ),
+  maxWidth: oneOfType(
+    [number, string]
+  ),
+  position: oneOf(
+    ['absolute', 'fixed', 'relative', 'static', 'none']
+  ),
+  top: oneOfType(
+    [number, string]
+  ),
+  left: oneOfType(
+    [number, string]
+  ),
+  right: oneOfType(
+    [number, string]
+  ),
+  bottom: oneOfType(
+    [number, string]
+  ),
 };
 
 export default Box;
