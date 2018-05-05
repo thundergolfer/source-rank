@@ -108,7 +108,7 @@ class Article extends Component {
           { loading && <Spinner /> }
           { data && (
             <div styleName="dataResult">
-              <div styleName="articleImage" style={{ backgroundImage: `url("http://localhost:4000/og?url=${url}")` }} />
+              <div styleName="articleImage" style={{ backgroundImage: `url("https://sourcerank-fb-messenger-bot.now.sh/og?url=${url}")` }} />
               <h2 style={{ color }}>{data.num_rating}</h2>
               <small>We've ranked this article as...</small>
               <p style={{ color }}>{data.str_rating}</p>
