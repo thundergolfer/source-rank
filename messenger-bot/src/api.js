@@ -55,7 +55,7 @@ class API {
         if ( entry.messaging ) {
           entry.messaging.forEach( message => {
             /* Process the message */
-            Messages.processMessage( message );
+            Messages.processFBMessage( message );
           });
         }
       });
@@ -83,6 +83,16 @@ class API {
         paddingBottom: 100,
         backgroundColor: color,
       }));
+    });
+
+    /* Setup a route to process a message for Twilio text messages */
+    this.app.get( '/twilio-webhook', async ( req, res ) => {
+      const result = await Messages.processTwilioMessage( req.query );
+      res.writeHead( 200, {'Content-Type': 'text/xml' });
+      res.write( '<?xml version="1.0" encoding="UTF-8"?>' );
+      res.write( '<Response>' );
+      res.write( `<Message>${result}</Message>` );
+      res.end( '</Response>' );
     });
   }
 
