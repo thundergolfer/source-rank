@@ -1,0 +1,17 @@
+app:
+  build: .
+  environment:
+    - DATABASE_URL=postgresql://postgresql/app
+    - FLASK_APP=./app.py
+  links:
+    - postgresql:postgresql
+  volumes:
+    - ./backend:/opt/app/backend
+  ports:
+    - "5000:5000"
+
+postgresql:
+  image: postgres:10.3
+  environment:
+    - POSTGRES_DB=app
+    - POSTGRES_USER=root
