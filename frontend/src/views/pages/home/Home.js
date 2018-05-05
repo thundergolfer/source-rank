@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
+import Layout from 'views/layout';
 import { Link } from 'views/components';
 
 class Home extends Component {
   render() {
     return (
-      <div>
+      <Layout
+        backgroundWaves
+      >
         <h1>Home</h1>
 
         <Link to="/about">
           <p>About</p>
         </Link>
-      </div>
+      </Layout>
     );
   }
 }

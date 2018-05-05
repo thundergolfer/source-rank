@@ -25,4 +25,6 @@
 .list > li {
   display: block;
   padding: 0 10px;
+  color: #b1b4ff;
+  font-size: 1.2rem;
 }
