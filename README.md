@@ -54,10 +54,14 @@ This project:
 
 ## Deployment
 
-To deploy the app, you'll need Heroku set up.
+#### Web Application
+
+To deploy the web app, you'll need Heroku set up.
 
 1. Get the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) if you don't already have it.
 2. You will need to [get added as a collaborator](https://devcenter.heroku.com/articles/collaborating) to the app.
+
+**The web application is deployed automatically on push to `master`**
 
 #### Messenger Bot
 
