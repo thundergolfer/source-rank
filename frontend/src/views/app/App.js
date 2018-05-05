@@ -3,8 +3,6 @@ import { node } from 'prop-types';
 
 const App = ({ children }) => (
   <div>
-    <h1>App</h1>
-
     {children}
   </div>
 );

@@ -18,13 +18,17 @@ module.exports = {
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
-  ]
+  ],
+  resolve: {
+    extensions: ['.js'],
+    modules: [src, 'node_modules'],
+  },
 };
