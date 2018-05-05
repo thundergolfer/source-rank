@@ -16,6 +16,11 @@ const routes = [
     exact: true,
     component: Pages.Article,
   },
+  {
+    path: '/methodology',
+    exact: true,
+    component: Pages.Methodology,
+  },
 ];
 
 export default routes;

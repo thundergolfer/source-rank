@@ -3,9 +3,11 @@ import { func, object } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
+import axios from 'axios';
+import { Api } from 'utils';
 import { fetchMethodologyHeuristics, selectMethodologyHeuristic } from 'flux/actions';
 import Layout from 'views/layout';
-import { Heading, Box, Dropdown, Button, Icon } from 'views/components';
+import { Heading, Box, Dropdown, Button, Icon, Underline } from 'views/components';
 
 class Home extends Component {
   static propTypes = {
@@ -14,8 +16,59 @@ class Home extends Component {
     selectMethodologyHeuristic: func,
   }
 
+  state = {
+    fetchingPublications: false,
+    fetchingRankings: false,
+    fetchedPublications: false,
+    fetchedRankings: false,
+    error: null,
+    publications: [],
+    rankings: [],
+  }
+
   componentDidMount() {
     this.props.fetchMethodologyHeuristics();
+
+    this.fetchPublications();
+  }
+
+  componentDidUpdate( prevProps ) {
+    if ( prevProps.methodology.heuristics.active !== this.props.methodology.heuristics.active )
+      this.fetchPublicationRankings();
+  }
+
+  fetchPublications = async () => {
+    this.setState({ fetchingPublications: true });
+
+    try {
+      const { data } = await Api.getPublications();
+
+      this.setState({ publications: data });
+    }
+    catch ( error ) {
+      this.setState({ error });
+    }
+    finally {
+      this.setState({ fetchingPublications: false });
+    }
+  }
+
+  fetchPublicationRankings = async () => {
+    const { active } = this.props.methodology.heuristics;
+
+    this.setState({ fetchingRankings: true });
+
+    try {
+      const { data } = await Api.getPublicationRankings( active );
+
+      this.setState({ rankings: data });
+    }
+    catch ( error ) {
+      this.setState({ error });
+    }
+    finally {
+      this.setState({ fetchingRankings: false });
+    }
   }
 
   handleChange = item => {
@@ -28,6 +81,8 @@ class Home extends Component {
       heuristics.fetched &&
       Object.keys( heuristics.data ).map( heuristic => heuristics.data[heuristic] )
     );
+
+    console.log( this.state );
 
     return (
       <Layout
@@ -48,7 +103,7 @@ class Home extends Component {
           >
             <Box marginBottom={40}>
               <Heading
-                size="lg"
+                size="md"
                 color="white"
               >
                 Choose a news quality signal
@@ -142,7 +197,7 @@ class Home extends Component {
               <Box marginBottom={25}>
                 <Heading
                   color="black"
-                  size="lg"
+                  size="md"
                 >
                   {heuristics.active == null
                     ? 'Select a heuristic!'
@@ -161,6 +216,32 @@ class Home extends Component {
               </p>
             </Box>
           </Box>
+        </Box>
+
+        <Box
+          marginTop={100}
+        >
+          <Heading
+            size="xl"
+            color="black"
+          >
+            Ranked Publications
+          </Heading>
+
+          <p>
+            News and media content sites ranked according to the heuristic:&nbsp;
+            <Underline
+              color="purple"
+              style={{
+                fontWeight: 'bold',
+                marginLeft: 10,
+              }}
+            >
+              {heuristicsData
+                ? heuristicsData[heuristics.active].name
+                : 'No heuristic selected!'}
+            </Underline>
+          </p>
         </Box>
       </Layout>
     );
