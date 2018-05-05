@@ -44,6 +44,7 @@ const Heading = ({
       element={element}
       style={{
         fontSize: sizes[size].fontSize,
+        ...restProps.style,
       }}
       styleName={cx(
         'element',
@@ -60,7 +61,7 @@ const Heading = ({
 Heading.propTypes = {
   pageHeading: bool,
   size: oneOf(
-    ['xs', 'sm', 'md', 'lg']
+    ['xs', 'sm', 'md', 'lg', 'xl']
   ),
   children: string,
   color: oneOf(
