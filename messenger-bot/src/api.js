@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import logger from './logger';
 import Messages from './messages';
 import text2png from 'text2png';
+import chroma from 'chroma-js';
 
 class API {
   constructor() {
@@ -68,16 +69,19 @@ class API {
       /* Get the ranking provided */
       const { ranking } = req.params;
 
+      /* Calculate what colour it should be based upon the rating */
+      const color = chroma.scale( [ 'red', 'orange', 'green' ] )( ranking / 10 ).hex();
+
       /* Render the ranking to an image */
       res.type( 'image/png' );
       res.send( text2png( ranking, {
         font: '200px Futura',
-        textColor: 'teal',
+        textColor: 'white',
         paddingLeft: 200,
         paddingRight: 200,
         paddingTop: 100,
         paddingBottom: 100,
-        backgroundColor: 'white',
+        backgroundColor: color,
       }));
     });
   }
