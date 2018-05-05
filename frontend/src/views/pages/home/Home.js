@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
+import { func } from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { fetchMethodologyHeuristics } from 'flux/actions';
 import Layout from 'views/layout';
 import { Heading, Box } from 'views/components';
 
 class Home extends Component {
+  static propTypes = {
+    fetchMethodologyHeuristics: func,
+  }
+
+  componentDidMount() {
+    this.props.fetchMethodologyHeuristics();
+  }
+
   render() {
     return (
       <Layout
@@ -16,7 +28,7 @@ class Home extends Component {
         >
           <Box
             flex={1}
-            marginTop={40}
+            marginTop={20}
           >
             <Heading
               size="lg"
@@ -55,4 +67,12 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  methodology: state.methodology,
+});
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchMethodologyHeuristics }, dispatch );
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )( Home );
