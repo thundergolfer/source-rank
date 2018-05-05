@@ -10,7 +10,13 @@ app = create_app(ma, db)
 migrate = Migrate(app, db)
 
 
-@app.route('/')
+@app.route('/', defaults={'path': ''})
+@app.route('/about')
+@app.route('/privacy')
+@app.route('/terms')
+@app.route('/article')
+@app.route('/methodology')
+@app.route('/demo')
 def homepage():
     return app.send_static_file('index.html')
 
@@ -18,6 +24,11 @@ def homepage():
 @app.route('/static/<path:path>')
 def static_resource(path):
     return app.send_static_file('/' + path)
+#
+#
+# @app.route('/<path:path>')
+# def wildcard(path):
+#     return app.send_static_file('index.html')
 
 
 if __name__ == '__main__':
