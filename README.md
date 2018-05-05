@@ -1,4 +1,4 @@
-# Facebook Hackathon 2018
+# Source Rank - Facebook Hackathon 2018 - [![Build Status](https://travis-ci.com/thundergolfer/source-rank.svg?token=yHGWQ42iK2BPk1FjaUMc&branch=master)](https://travis-ci.com/thundergolfer/source-rank)
 
 ----------
 
