@@ -1,8 +1,10 @@
 import React from 'react';
 import { bool, node } from 'prop-types';
+import Container from './container';
 
 const Layout = ({
   backgroundWaves = false,
+  container = false,
   children,
 }) => {
   return (
@@ -24,13 +26,17 @@ const Layout = ({
         />
       )}
 
-      {children}
+      {container
+        ? <Container>{children}</Container>
+        : children
+      }
     </div>
   );
 };
 
 Layout.propTypes = {
   backgroundWaves: bool,
+  container: bool,
   children: node,
 };
 

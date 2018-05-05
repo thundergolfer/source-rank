@@ -7,6 +7,7 @@ class Home extends Component {
     return (
       <Layout
         backgroundWaves
+        container
       >
         <h1>Home</h1>
 
