@@ -15,7 +15,7 @@ def my_url_normalizer(url):
     netloc = url.netloc
     if not netloc.startswith('www.'):
         netloc = 'www.' + netloc
-    normalized_url = '{}//{}'.format(scheme, netloc)
+    normalized_url = '{}://{}'.format(scheme, netloc)
 
     return normalized_url
 

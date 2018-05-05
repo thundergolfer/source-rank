@@ -3,6 +3,7 @@ from flask import Response
 from flask_restful import Resource, reqparse
 
 from backend.evaluate.basic_as_fck import BasicArticleEvaluator
+from backend.evaluate.article_evaluator import ArticleEvaluator
 from backend.schemas import article_report_schema
 
 from newspaper.urls import valid_url
@@ -24,6 +25,7 @@ class Article(Resource):
             )
             return response
 
-        x = BasicArticleEvaluator.evaluate(url)
+        report, heuristic_scores = ArticleEvaluator.evaluate(url)
+        dict_report = article_report_schema.dump(report).data
 
-        return article_report_schema.dump(x)
+        return {**dict_report, **heuristic_scores}
