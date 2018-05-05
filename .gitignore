@@ -99,3 +99,13 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+
+#######################
+#                     #
+# JAVASCRIPT RELATED  #
+#                     #
+#######################
+
+frontend/node_modules/
+frontend/yarn-error.log

@@ -1,0 +1,29 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+Flask = "*"
+gunicorn = "*"
+Flask-RESTful = "*"
+"psycopg2-binary" = "*"
+Flask-SQLAlchemy = "*"
+alembic = "*"
+Flask-Migrate = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
+"newspaper3k" = "*"
+scholarly = "*"
+
+
+[dev-packages]
+
+
+
+[requires]
+
+python_version = "3.6"
