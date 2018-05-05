@@ -48,7 +48,7 @@ function checkFacebook() {
         });
       }
     }
-  }, 2000);
+  }, 500);
 }
 
 function checkReddit() {
@@ -87,7 +87,7 @@ function checkReddit() {
         });
       }
     }
-  }, 2000);
+  }, 500);
 }
 
 function checkGoogle() {
@@ -127,7 +127,7 @@ function checkGoogle() {
         });
       }
     }
-  }, 2000);
+  }, 500);
 }
 
 function getURLRanking( url, callback ) {
