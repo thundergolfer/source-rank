@@ -15,9 +15,18 @@ const reducer = ( state = initialState, { type, payload }) => {
         error: null,
       };
 
-    case 'FETCH_METHODOLOGY_HEURISTICS_SUCCESS':
+    case 'FETCH_METHODOLOGY_HEURISTICS_SUCCESS': {
+      const active = (
+        state.active == null &&
+        payload instanceof Array &&
+        payload.length > 0
+      )
+        ? payload[0].id
+        : state.active;
+
       return {
         ...state,
+        active,
         fetching: false,
         fetched: true,
         data: payload.reduce(( resultant, heuristic ) => {
@@ -26,12 +35,19 @@ const reducer = ( state = initialState, { type, payload }) => {
           return resultant;
         }, {}),
       };
+    }
 
     case 'FETCH_METHODOLOGY_HEURISTICS_FAILURE':
       return {
         ...state,
         fetching: false,
         error: payload,
+      };
+
+    case 'SELECT_METHODOLOGY_HEURISTIC':
+      return {
+        ...state,
+        active: payload,
       };
 
     default:

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { func, object } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchMethodologyHeuristics } from 'flux/actions';
+import ReactMarkdown from 'react-markdown';
+import { fetchMethodologyHeuristics, selectMethodologyHeuristic } from 'flux/actions';
 import Layout from 'views/layout';
 import { Heading, Box, Dropdown } from 'views/components';
 
@@ -10,6 +11,7 @@ class Home extends Component {
   static propTypes = {
     fetchMethodologyHeuristics: func,
     methodology: object,
+    selectMethodologyHeuristic: func,
   }
 
   componentDidMount() {
@@ -17,7 +19,7 @@ class Home extends Component {
   }
 
   handleChange = item => {
-    console.log( item ) // eslint-disable-line
+    this.props.selectMethodologyHeuristic( item.id );
   }
 
   render() {
@@ -48,7 +50,7 @@ class Home extends Component {
               Choose a news quality signal
             </Heading>
 
-            <Dropdown items={heuristics.data} onChange={this.handleChange}>
+            <Dropdown items={heuristicsData} onChange={this.handleChange}>
               {({ selectedIndex, onSelect, isOpen, onToggle }) => (
                 <div>
                   <button
@@ -101,11 +103,20 @@ class Home extends Component {
                 color="black"
                 size="lg"
               >
-                "I trust the experts"
+                {heuristics.active == null
+                  ? 'Select a heuristic!'
+                  : heuristics.data[heuristics.active].name}
               </Heading>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce malesuada nunc vitae nunc semper molestie. Cras commodo lectus sit amet diam tincidunt, quis posuere arcu posuere. Quisque magna turpis, molestie in iaculis quis, sollicitudin eu nibh.</p>
-              <p>Ut eget est eu enim luctus accumsan. Donec quis purus vitae lectus vestibulum commodo. Mauris ac quam dui. Ut sit amet justo ac dolor ullamcorper dictum nec vitae felis. Duis faucibus aliquam nisi at sollicitudin. Maecenas fermentum blandit sem vitae sagittis.</p>
+              <p>
+                {heuristics.active == null
+                  ? 'Select a heuristic!'
+                  : (
+                    <ReactMarkdown
+                      source={heuristics.data[heuristics.active].description}
+                    />
+                  )}
+              </p>
             </Box>
           </Box>
         </Box>
@@ -119,7 +130,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchMethodologyHeuristics }, dispatch );
+  return bindActionCreators({
+    fetchMethodologyHeuristics,
+    selectMethodologyHeuristic,
+  }, dispatch );
 };
 
 export default connect( mapStateToProps, mapDispatchToProps )( Home );
