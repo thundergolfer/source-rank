@@ -134,7 +134,7 @@ class Home extends Component {
                           heuristicsData &&
                           heuristicsData.length > 0
                         )
-                          ? heuristicsData[selectedIndex].name
+                          ? `"${heuristicsData[selectedIndex].name}"`
                           : heuristics.fetching
                             ? 'Loading...'
                             : 'Failed to load heuristics.'}
@@ -202,7 +202,7 @@ class Home extends Component {
                 >
                   {heuristics.active == null
                     ? 'Select a heuristic!'
-                    : heuristics.data[heuristics.active].name}
+                    : `"${heuristics.data[heuristics.active].name}"`}
                 </Heading>
               </Box>
 
