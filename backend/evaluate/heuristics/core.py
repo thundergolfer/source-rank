@@ -22,19 +22,19 @@ ALL_HEURISTICS = [
         HeuristicID.TRUST_EXPERTS,
         'trust-the-experts',
         'I trust in experts',
-        'In order to gain the best information on topics such as economics, politics, philosophy, biology etc turn to the experts on those fields, who dedicate themselves to specialising in complex problem domains. So in order honor this information-quality heuristic, we evaluate publication on the basis of how many academics contribute to the publication. Use this heuristic is you care that a publishers has experts contributing to their publication, and not amateurs.\n\n### See The Code \n\n https://github.com/thundergolfer/source-rank/blob/master/backend/evaluate/heuristics/trust_the_experts.py'
+        'In order to gain the best information on topics such as economics, politics, philosophy, biology etc turn to the experts on those fields, who dedicate themselves to specialising in complex problem domains. So in order honor this information-quality heuristic, we evaluate publication on the basis of how many academics contribute to the publication. Use this heuristic is you care that a publishers has experts contributing to their publication, and not amateurs.\n\n#### See The Code \n\n https://github.com/thundergolfer/source-rank/blob/master/backend/evaluate/heuristics/trust_the_experts.py'
     ),
     Heuristic(
         HeuristicID.PRO_SCIENCE,
         'is-pro-science',
         'I want science backed information',
-        'Science is perhaps the greatest knowledge seeking tool of mankind. Often where scientific knowledge exists it is ignored or misused by content publishers. Use this heuristic if you are most interested in sources that put a strong emphasis on respect of scientific expertise and the scientific method.'
+        'Science is perhaps the greatest knowledge seeking tool of mankind. Often where scientific knowledge exists it is ignored or misused by content publishers. Use this heuristic if you are most interested in sources that put a strong emphasis on respect of scientific expertise and the scientific method.\n\n#### See The Code:\n\nhttps://github.com/thundergolfer/source-rank/blob/master/backend/evaluate/heuristics/is_pro_science.py'
     ),
     Heuristic(
         HeuristicID.HAS_SUBSCRIPTION_MODEL,
         'has-subscription-revenue',
         'I don\'t want click-funded content',
-        'This heuristic asks if a publication has a subscription revenue model. Purely click-funded publications have mis-aligned incentives with users. They are motivated to sensationalise, mislead and fabricate in order to drive \'clicks\'. Publications that have a subscription model are not as incentivised to drive clicks, and instead seek to gain the respect and loyalty of their paying subscribers.'
+        'This heuristic asks if a publication has a subscription revenue model. Purely click-funded publications have mis-aligned incentives with users. They are motivated to sensationalise, mislead and fabricate in order to drive \'clicks\'. Publications that have a subscription model are not as incentivised to drive clicks, and instead seek to gain the respect and loyalty of their paying subscribers.\n\n#### See The Code:\n\nhttps://github.com/thundergolfer/source-rank/blob/master/backend/evaluate/heuristics/has_subscription_model.py'
     ),
     Heuristic(
         HeuristicID.BIAS,
@@ -45,7 +45,7 @@ ALL_HEURISTICS = [
     Heuristic(
         HeuristicID.VALUE_SOURCES,
         'i-value-sources',
-        'I value sources',
+        'I value thoroughly source information',
         'Good information is typically *dense* information. A lack of links to external websites is a signal of shallow and/or facile analyis.'
     ),
 ]
