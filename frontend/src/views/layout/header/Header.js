@@ -5,7 +5,9 @@ import { Logo, Link } from 'views/components';
 const Header = () => (
   <div styleName="wrapper">
     <div>
-      <Logo styleName="logo" round />
+      <Link to="/">
+        <Logo styleName="logo" round />
+      </Link>
     </div>
 
     <div>

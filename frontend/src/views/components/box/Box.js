@@ -85,7 +85,7 @@ const Box = ({
     ...borderSize && {
       borderSize,
       borderStyle,
-      borderColor: colours[borderColor],
+      borderColor: colours[borderColor] || borderColor,
     },
     ...softEdges && {
       borderRadius: 10,

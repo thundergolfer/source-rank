@@ -70,7 +70,7 @@ class Methodology extends Component {
               marginTop={10}
             >
               <h2 style={{ margin: 0 }}>
-                {item.name}
+                '{item.name}'
               </h2>
               <div style={{ margin: 0 }}>
                 <ReactMarkdown source={item.description} />

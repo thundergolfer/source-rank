@@ -77,6 +77,7 @@ class Home extends Component {
 
   render() {
     const { heuristics } = this.props.methodology;
+    const { fetchingPublications, fetchingRankings, rankings, publications, error } = this.state;
     const heuristicsData = (
       heuristics.fetched &&
       Object.keys( heuristics.data ).map( heuristic => heuristics.data[heuristic] )
@@ -237,11 +238,91 @@ class Home extends Component {
                 marginLeft: 10,
               }}
             >
-              {heuristicsData
-                ? heuristicsData[heuristics.active].name
+              {heuristics.data[heuristics.active]
+                ? heuristics.data[heuristics.active].name
                 : 'No heuristic selected!'}
             </Underline>
           </p>
+
+          <Box
+            marginTop={40}
+            marginBottom={40}
+          >
+            {(
+              fetchingPublications ||
+              fetchingRankings
+            ) ? (
+              <p>Loading...</p>
+            ) : (
+              error ? (
+                <p>Error!</p>
+              ) : (
+                publications.length > 0 ? (
+                  publications
+                    .slice( 0, 100 )
+                    .map( publication => {
+                      const { rank } = rankings.publications.find( pub => pub.id === publication.id );
+                      const color = ( rank >= 8 ) ? '#2ecc71' // Green
+                        : ( rank >= 5 ) ? '#f39c12' // Orange
+                        : '#e74c3c'; // Red
+
+                      console.log({ rank, color }); // eslint-disable-line no-console
+
+                      return (
+                        <Box
+                          key={publication.id}
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="space-between"
+                          borderColor={color}
+                          borderSize={2}
+                          softEdges
+                          marginBottom={15}
+                          padding={15}
+                        >
+                          <Box
+                            display="flex"
+                            alignItems="center"
+                          >
+                            <p
+                              style={{
+                                margin: 0,
+                                marginLeft: 10,
+                                marginRight: 20,
+                                fontSize: '2rem',
+                                color,
+                              }}
+                            >
+                              {rank}.
+                            </p>
+                            <p
+                              style={{
+                                margin: 0,
+                                fontSize: '1.5rem',
+                              }}
+                            >
+                              {publication.name}
+                            </p>
+                          </Box>
+
+                          <img
+                            src={publication.icon_url}
+                            style={{
+                              height: 50,
+                              width: 50,
+                              border: '1px solid #DDD',
+                            }}
+                          />
+                        </Box>
+                      );
+                    })
+                  ) : (
+                    <p>No publications to show</p>
+                  )
+                )
+              )
+            }
+          </Box>
         </Box>
       </Layout>
     );

@@ -21,7 +21,7 @@ const Layout = ({
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPositionY: 'bottom',
-            height: 400,
+            height: 450,
             width: '100vw',
             position: 'absolute',
             top: 0,
