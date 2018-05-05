@@ -11,7 +11,8 @@ class Heuristics(Resource):
             {
                 'name': x.motivator,
                 'description': x.description,
-                'key': x.key
+                'key': x.key,
+                'id': x.id,
             } for x in ALL_HEURISTICS
         ]
 
