@@ -2,6 +2,7 @@ import React from 'react';
 import { bool, node } from 'prop-types';
 import Container from './container';
 import Header from './header';
+import Floaty from '../components/floaty';
 
 const Layout = ({
   backgroundWaves = false,
@@ -36,6 +37,7 @@ const Layout = ({
         ? <Container>{children}</Container>
         : children
       }
+      <Floaty>Hello People</Floaty>
     </div>
   );
 };
