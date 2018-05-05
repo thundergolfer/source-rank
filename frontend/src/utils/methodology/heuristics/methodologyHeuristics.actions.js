@@ -70,3 +70,8 @@ export const fetchMethodologyHeuristicsFailure = error => ({
   type: 'FETCH_METHODOLOGY_HEURISTICS_FAILURE',
   payload: error,
 });
+
+export const selectMethodologyHeuristic = id => ({
+  type: 'SELECT_METHODOLOGY_HEURISTIC',
+  payload: id,
+});

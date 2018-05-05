@@ -22,7 +22,12 @@ class Dropdown extends Component {
     if ( this.props.onChange ) {
       const { items } = this.props;
 
-      this.props.onChange( items[index] );
+      if (
+        items &&
+        items instanceof Array &&
+        items.length > 0
+      )
+        this.props.onChange( items[index] );
     }
   }
 
