@@ -5,22 +5,12 @@ import { SvgLogo } from 'views/components/svg';
 const Header = () => (
   <div styleName="wrapper">
     <div>
-      <SvgLogo
-        style={{
-          height: 90,
-          position: 'relative',
-          top: 15,
-        }}
-      />
+      <SvgLogo styleName="logo" />
     </div>
 
     <div>
       <nav>
-        <ul
-          style={{
-
-          }}
-        >
+        <ul styleName="list">
           <li>Check an article</li>
           <li>FB Messenger</li>
           <li>Methodology</li>
