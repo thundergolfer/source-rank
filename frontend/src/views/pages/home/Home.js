@@ -8,6 +8,7 @@ class Home extends Component {
       <Layout
         backgroundWaves
         container
+        header
       >
         <h1>Home</h1>
 

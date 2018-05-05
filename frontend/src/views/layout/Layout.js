@@ -1,10 +1,12 @@
 import React from 'react';
 import { bool, node } from 'prop-types';
 import Container from './container';
+import Header from './header';
 
 const Layout = ({
   backgroundWaves = false,
   container = false,
+  header = false,
   children,
 }) => {
   return (
@@ -26,6 +28,10 @@ const Layout = ({
         />
       )}
 
+      {header && (
+        <Header />
+      )}
+
       {container
         ? <Container>{children}</Container>
         : children
@@ -38,6 +44,7 @@ Layout.propTypes = {
   backgroundWaves: bool,
   container: bool,
   children: node,
+  header: bool,
 };
 
 export default Layout;
