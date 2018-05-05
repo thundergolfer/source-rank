@@ -7,7 +7,7 @@ class Api {
       timeout: 30000,
       responseType: 'json',
       ...options,
-      url: `${window.location.origin}/api/${options.url}`,
+      url: `${config.api.baseUrl}/${options.url}`,
       headers: {
         'Content-Type': 'application/json',
         ...options.headers,

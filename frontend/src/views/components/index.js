@@ -3,3 +3,4 @@ export { default as Logo } from './logo';
 export { default as Heading } from './heading';
 export { default as CreateElement } from './create-element';
 export { default as Box } from './box';
+export { default as Dropdown } from './dropdown';
