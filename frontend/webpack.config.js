@@ -5,7 +5,10 @@ const src = path.resolve( __dirname, './src' );
 const dist = path.resolve( __dirname, './dist' );
 
 module.exports = {
-  entry: `${src}/index.js`,
+  entry: [
+    'babel-polyfill',
+    `${src}/index.js`,
+  ],
   output: {
     filename: 'bundle.js',
     path: dist,

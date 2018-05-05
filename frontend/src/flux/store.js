@@ -4,7 +4,7 @@ import middleware from './middleware';
 
 const store = createStore(
   reducers,
-  middleware
+  middleware,
 );
 
 export default store;

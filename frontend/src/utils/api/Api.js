@@ -7,7 +7,7 @@ class Api {
       timeout: 30000,
       responseType: 'json',
       ...options,
-      url: `${config.api.baseUrl}${options.url}`,
+      url: `${window.location.origin}/api/${options.url}`,
       headers: {
         'Content-Type': 'application/json',
         ...options.headers,
@@ -17,9 +17,10 @@ class Api {
 
   getMethodologyHeuristics() {
     return this.call({
-      url: '/methodology/heuristics',
+      method: 'get',
+      url: 'methodology/heuristics',
     });
   }
 }
 
-export default Api;
+export default new Api();
