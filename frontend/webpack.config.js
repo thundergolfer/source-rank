@@ -1,35 +1,30 @@
-var webpack = require('webpack');
-var path = require('path');
+const path = require( 'path' );
+const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
-var BUILD_DIR = path.resolve(__dirname, 'public/static/js');
-var APP_DIR = path.resolve(__dirname, 'src');
+const src = path.resolve( __dirname, './src' );
 
-var config = {
-    entry: APP_DIR + '/index.js',
-    output: {
-        path: BUILD_DIR,
-        filename: 'bundle.js'
-    },
-    module : {
-        loaders : [
-            {
-                test : /\.jsx?/,
-                include : APP_DIR,
-                loader : 'babel',
-                query: {
-                  presets: ['react', 'es2015']
-                }
-            }
+module.exports = {
+  entry: src + '/index.js',
+  context: src,
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: path.resolve( __dirname, 'node_modules' ),
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
         ]
-    },
-    plugins: [
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-          API_ROOT: JSON.stringify(process.env.API_ROOT),
-        },
-      }),
+      }
     ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+    }),
+  ]
 };
-
-module.exports = config;

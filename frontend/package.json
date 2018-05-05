@@ -1,33 +1,30 @@
 {
-  "name": "facebook-hackathon-2018-frontend",
-  "version": "1.0.0",
-  "description": "Facebook Hackathon 2018 - Frontend",
+  "name": "source-rank-frontend",
+  "version": "0.0.1",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack -d --watch",
-    "build": "webpack",
-    "serve": "serve ./public",
-    "start": "nodemon"
+    "start": "webpack-dev-server --port=3000 --mode=development",
+    "build": "webpack -p --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "proxy": "http://localhost:8080",
-  "author": "Christian Nwamba (original) + Jonathon Belotti (ie. thundergolfer)",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thundergolfer/source-rank.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thundergolfer/source-rank/issues"
+  },
+  "homepage": "https://github.com/thundergolfer/source-rank#readme",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.13.2",
-    "babel-preset-react": "^6.11.1",
-    "nodemon": "^1.17.1",
-    "serve": "^1.4.0",
-    "webpack": "^1.13.1"
-  },
-  "dependencies": {
-    "axios": "^0.14.0",
-    "express": "^4.14.0",
-    "history": "^3.0.0",
-    "http-proxy-middleware": "^0.17.4",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "react-router": "^2.6.1"
+    "babel-loader": "^7.1.4",
+    "css-loader": "^0.28.11",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.7.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-dev-server": "^3.1.4"
   }
 }
