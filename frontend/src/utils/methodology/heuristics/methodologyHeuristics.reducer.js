@@ -2,6 +2,7 @@ const initialState = {
   fetching: false,
   fetched: false,
   error: null,
+  active: null,
   data: {},
 };
 
@@ -19,7 +20,11 @@ const reducer = ( state = initialState, { type, payload }) => {
         ...state,
         fetching: false,
         fetched: true,
-        data: payload,
+        data: payload.reduce(( resultant, heuristic ) => {
+          resultant[heuristic.id] = heuristic;
+
+          return resultant;
+        }, {}),
       };
 
     case 'FETCH_METHODOLOGY_HEURISTICS_FAILURE':

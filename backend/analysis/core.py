@@ -7,6 +7,7 @@ import newspaper
 from backend.application import create_app
 from backend.models import db, Article, Author, Publication, get_or_create
 from backend.analysis.scholar import find_areas_of_academic_study
+from backend.util import my_url_normalizer
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -46,6 +47,8 @@ def process_article(article, publication, db):
         article_row.authors.append(author)
         if created:
             areas_of_academic_study = find_areas_of_academic_study(author_name, db)
+            if len(str(areas_of_academic_study)) > 255:
+                areas_of_academic_study = ['stuff'] # > 255 wont fit in DB
             author.areas_of_interest = json.dumps(areas_of_academic_study)
             db.session.commit()
 
@@ -54,14 +57,22 @@ def process_article(article, publication, db):
     db.session.commit()
 
 
+def process_all_publishers(db):
+    for pub in Publication.query.all():
+        process_publisher(pub, db)
+
+
 if __name__ == '__main__':
-    usage_msg = "USAGE: python -m backend.analysis.core <DOMAIN URL eg. https://cnn.com>"
-    if len(sys.argv) is not 2:
+    usage_msg = "USAGE: python -m backend.analysis.core [DOMAIN URL eg. https://cnn.com]"
+    if len(sys.argv) > 2:
         exit(usage_msg)
 
-    domain = sys.argv[1]
-    pub = Publication.query.filter_by(domain=domain).first()
-    if not pub:
-        exit("No publication found for domain: {}".format(domain))
+    if len(sys.argv) is 2:
+        domain = my_url_normalizer(sys.argv[1])
+        pub = Publication.query.filter_by(domain=domain).first()
+        if not pub:
+            exit("No publication found for domain: {}".format(domain))
 
-    process_publisher(pub, db)
+        process_publisher(pub, db)
+    else:
+        process_all_publishers(db)

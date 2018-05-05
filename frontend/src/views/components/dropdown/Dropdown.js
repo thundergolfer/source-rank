@@ -1,15 +1,29 @@
-import React, { Component } from 'react';
-import { string, oneOf, number, oneOfType, node, bool } from 'prop-types';
-import Downshift from 'downshift';
+import { Component } from 'react';
+import { func, array } from 'prop-types';
 
 class Dropdown extends Component {
+  static propTypes = {
+    children: func,
+    onChange: func,
+    items: array.isRequired,
+  }
+
   state = {
-    selectedId: 0,
+    selectedIndex: 0,
     isOpen: false,
   }
 
-  handleSelect = id => () => {
-    this.setState({ selectedId: id });
+  handleSelect = index => () => {
+    this.setState({
+      selectedIndex: index,
+      isOpen: false,
+    });
+
+    if ( this.props.onChange ) {
+      const { items } = this.props;
+
+      this.props.onChange( items[index] );
+    }
   }
 
   handleToggle = () => {
@@ -17,110 +31,15 @@ class Dropdown extends Component {
   }
 
   render() {
-    const { items } = this.props;
-    const { isOpen } = this.state;
+    const { children } = this.props;
 
-    return (
-      <div styleName="wrapper">
-        <button
-          type="button"
-          styleName="button"
-          onClick={this.handleToggle}
-        >
-          <p>{items[selectedIndex].text}</p>
-          <i className="material-icons">expand_more</i>
-        </button>
-
-        {isOpen && (
-          <div className="dropdown">
-            {items.length > 0 ? (
-              items.map( item => (
-                <button
-                  type="button"
-                >
-                  {item.text}
-                </button>
-              ))
-            ) : (
-              <p>No items to show.</p>
-            )}
-          </div>
-        )}
-      </div>
-    );
+    return children({
+      onSelect: this.handleSelect,
+      isOpen: this.state.isOpen,
+      selectedIndex: this.state.selectedIndex,
+      onToggle: this.handleToggle,
+    });
   }
 }
-
-export default Dropdown;
-
-Dropdown.propTypes = {
-  width: oneOfType(
-    [number, string]
-  ),
-  height: oneOfType(
-    [number, string]
-  ),
-  display: oneOf(
-    ['block', 'none', 'flex']
-  ),
-  flex: string,
-  justifyContent: oneOf(
-    ['space-between', 'space-around', 'center', 'flex-start', 'flex-end']
-  ),
-  alignItems: oneOf(
-    ['space-between', 'space-around', 'center', 'flex-start', 'flex-end']
-  ),
-  flexDirection: oneOf(
-    ['row', 'column', 'row-reverse', 'column-reverse']
-  ),
-  margin: oneOfType(
-    [number, string]
-  ),
-  marginX: oneOfType(
-    [number, string]
-  ),
-  marginY: oneOfType(
-    [number, string]
-  ),
-  marginLeft: oneOfType(
-    [number, string]
-  ),
-  marginRight: oneOfType(
-    [number, string]
-  ),
-  marginTop: oneOfType(
-    [number, string]
-  ),
-  marginBottom: oneOfType(
-    [number, string]
-  ),
-  padding: oneOfType(
-    [number, string]
-  ),
-  paddingX: oneOfType(
-    [number, string]
-  ),
-  paddingY: oneOfType(
-    [number, string]
-  ),
-  paddingLeft: oneOfType(
-    [number, string]
-  ),
-  paddingRight: oneOfType(
-    [number, string]
-  ),
-  paddingTop: oneOfType(
-    [number, string]
-  ),
-  paddingBottom: oneOfType(
-    [number, string]
-  ),
-  children: node,
-  backgroundColor: string,
-  softEdges: bool,
-  borderSize: number,
-  borderColor: string,
-  borderStyle: string,
-};
 
 export default Dropdown;
