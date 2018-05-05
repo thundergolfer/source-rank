@@ -4,7 +4,24 @@
   "description": "A Facebook messenger bot to give users quick access to our publication ranking service",
   "main": "index.js",
   "repository": "https://github.com/thundergolfer/facebook-hackathon-2018",
+  "scripts": {
+    "start": "nodemon dist/index.js",
+    "build": "rimraf dist/ && babel ./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "dev": "nodemon --ignore dist/ --exec babel-node -- ./src/index.js"
+  },
   "author": "thundergolfer",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-mocha": "^4.11.0"
+  }
 }
