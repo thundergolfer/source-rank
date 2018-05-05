@@ -16,14 +16,35 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              ['react-css-modules', {
+                exclude: 'node_modules',
+                context: src,
+              }],
+            ],
+          },
+        },
         exclude: path.resolve( __dirname, 'node_modules' ),
       },
       {
         test: /\.css$/,
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader' },
+          { loader: 'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]' },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            },
+          },
         ],
       },
     ],
