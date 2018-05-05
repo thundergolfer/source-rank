@@ -48,7 +48,7 @@ class Home extends Component {
           >
             <Box marginBottom={40}>
               <Heading
-                size="lg"
+                size="md"
                 color="white"
               >
                 Choose a news quality signal
@@ -142,7 +142,7 @@ class Home extends Component {
               <Box marginBottom={25}>
                 <Heading
                   color="black"
-                  size="lg"
+                  size="md"
                 >
                   {heuristics.active == null
                     ? 'Select a heuristic!'
@@ -161,6 +161,24 @@ class Home extends Component {
               </p>
             </Box>
           </Box>
+        </Box>
+
+        <Box
+          marginTop={100}
+        >
+          <Heading
+            size="xl"
+            color="black"
+          >
+            Ranked Publications
+          </Heading>
+
+          <p>
+            News and media content sites ranked according to the heuristic:&nbsp;
+            {heuristicsData
+              ? heuristicsData[heuristics.active].name
+              : 'No heuristic selected!'}
+          </p>
         </Box>
       </Layout>
     );

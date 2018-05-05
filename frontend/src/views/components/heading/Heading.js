@@ -28,7 +28,7 @@ const sizes = {
 };
 
 const Heading = ({
-  size = 'lg',
+  size = 'md',
   pageHeading = false,
   color = 'white',
   children,
@@ -42,6 +42,9 @@ const Heading = ({
     <CreateElement
       {...restProps}
       element={element}
+      style={{
+        fontSize: sizes[size].fontSize,
+      }}
       styleName={cx(
         'element',
         color,
