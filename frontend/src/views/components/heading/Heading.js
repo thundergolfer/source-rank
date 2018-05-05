@@ -61,7 +61,7 @@ Heading.propTypes = {
   ),
   children: string,
   color: oneOf(
-    ['white']
+    ['white', 'black']
   ),
 };
 

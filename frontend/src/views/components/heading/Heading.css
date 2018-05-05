@@ -1,17 +1,24 @@
 .element {
   position: 'relative';
+  margin: 0;
 }
 
 .white {
   color: white;
 }
 
-.white .underline:after {
+.black {
+  color: black;
+}
+
+.white .underline:after,
+.black .underline:after {
   border-bottom: 15px solid rgba(177,180,255,0.5);
 }
 
 .underline {
   position: relative;
+  z-index: 2;
 }
 
 .underline:after {
