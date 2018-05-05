@@ -39,7 +39,7 @@ class Facebook {
                 elements: [{
                   title: 'Rating',
                   subtitle: message,
-                  image_url: `https://sourcerank-fb-messenger-bot.now.sh/images/ranking/${rating}`,
+                  image_url: `https://sourcerank-fb-messenger-bot.now.sh/images/ranking/${rating}?t=${new Date().getTime()}`,
                   buttons: [
                     {
                       type:'web_url',
