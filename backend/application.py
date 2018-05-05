@@ -5,6 +5,7 @@ from backend.resources.todo import TodoList
 from backend.resources.publications import Publications
 from backend.resources.rank_publications import PublicationsRank
 from backend.resources.article import Article
+from backend.resources.heuristics import Heuristics
 from backend.schemas import ma
 from backend.models import db
 from backend.settings import config
@@ -40,3 +41,4 @@ def attach_api(app):
     api.add_resource(Publications, '/api/publications')
     api.add_resource(Article, '/api/article')
     api.add_resource(PublicationsRank, '/api/publications/rank')
+    api.add_resource(Heuristics, '/api/methodology/heuristics')
