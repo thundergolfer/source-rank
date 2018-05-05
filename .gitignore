@@ -105,6 +105,9 @@ ENV/
 
 .DS_Store
 
+# pycharm
+.idea/
+*.stackdump
 
 #######################
 #                     #
@@ -115,3 +118,4 @@ ENV/
 frontend/node_modules/
 frontend/yarn-error.log
 messenger-bot/node_modules/
+
