@@ -1,0 +1,1 @@
+from backend.evaluate.heuristics.trust_the_experts.scoring import score_publication
