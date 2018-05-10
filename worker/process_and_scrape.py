@@ -3,7 +3,7 @@
 import logging
 from time import sleep
 
-from backend.scraping.media_bias_fact_check_scraper import run_media_bias_scraping
+from backend.evaluate.heuristics.avoid_highly_biased.building.media_bias_fact_check_scraper import run_media_bias_scraping
 
 ONE_HOUR = 60 * 60
 HALF_HOUR = ONE_HOUR // 2
