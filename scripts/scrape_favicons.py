@@ -41,13 +41,21 @@ def main():
             continue
 
         soup = BeautifulSoup(page.content, 'html.parser')
-        icon_link = soup.find("link", rel="shortcut icon")
-        if not icon_link:
-            icon_link = soup.find("link", rel="Shortcut Icon")
-        if not icon_link:
-            icon_link = soup.find("link", rel="SHORTCUT ICON")
+
+        interesting_rel_vals = [
+            'Shortcut Icon',
+            'shortcut icon',
+            'SHORTCUT ICON',
+            'icon'
+        ]
+        for rel_val in interesting_rel_vals:
+            icon_link = soup.find("link", rel=rel_val)
+            if icon_link:
+                break
+
         if not icon_link:
             continue
+            
         if is_absolute(icon_link['href']):
             p.icon_url = icon_link['href']
         else:
