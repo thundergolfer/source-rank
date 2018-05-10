@@ -6,7 +6,7 @@ import newspaper
 
 from backend.application import create_app
 from backend.models import db, Article, Author, Publication, get_or_create
-from backend.analysis.scholar import find_areas_of_academic_study
+from backend.evaluate.heuristics.trust_the_experts.building.scholar import find_areas_of_academic_study
 from backend.util import my_url_normalizer
 
 logging.basicConfig(level=logging.INFO)

@@ -2,7 +2,6 @@ import json
 from flask import Response
 from flask_restful import Resource, reqparse
 
-from backend.evaluate.basic_as_fck import BasicArticleEvaluator
 from backend.evaluate.article_evaluator import ArticleEvaluator
 from backend.schemas import article_report_schema
 

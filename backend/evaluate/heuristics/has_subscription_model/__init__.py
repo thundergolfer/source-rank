@@ -1,0 +1,1 @@
+from backend.evaluate.heuristics.has_subscription_model.scoring import score_publication
