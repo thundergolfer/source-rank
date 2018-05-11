@@ -8,6 +8,7 @@ import { Api } from 'utils';
 import { fetchMethodologyHeuristics, selectMethodologyHeuristic } from 'flux/actions';
 import Layout from 'views/layout';
 import { Heading, Box, Dropdown, Button, Icon, Underline, Spinner } from 'views/components';
+import './home.css';
 
 class Home extends Component {
   static propTypes = {
@@ -304,7 +305,9 @@ class Home extends Component {
                                 fontSize: '1.5rem',
                               }}
                             >
-                              {pubData.name}
+                              <a href={pubData.domain} styleName="publicationLink" >
+                                {pubData.name}
+                              </a>
                             </p>
                           </Box>
 

@@ -1,0 +1,11 @@
+.publicationLink {
+  text-decoration: none;
+}
+
+.publicationLink:visited {
+  color: black;
+}
+
+p .publicationLink:hover {
+  box-shadow: 0 -.75em 0 rgba(177, 180, 255, 0.3) inset;
+}
