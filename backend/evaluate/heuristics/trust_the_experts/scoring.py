@@ -15,7 +15,6 @@ def score_publication(publication):
 
             if len(interest_areas) > 0:
                 academic_authors += 1
-                print(author.name)
 
     if total_authors <= 0:
         return HeuristicScore.min()
