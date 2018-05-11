@@ -316,7 +316,9 @@ class Home extends Component {
                             style={{
                               height: 50,
                               width: 50,
-                              border: '1px solid #DDD',
+                              border: '3px solid',
+                              borderColor: color,
+                              borderRadius: 10,
                             }}
                           />
                         </Box>

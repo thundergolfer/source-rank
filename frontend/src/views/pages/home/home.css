@@ -1,9 +1,6 @@
-.publicationLink {
-  text-decoration: none;
-}
-
-.publicationLink:visited {
+.publicationLink, .publicationLink:visited {
   color: black;
+  text-decoration: none;
 }
 
 p .publicationLink:hover {
