@@ -134,7 +134,6 @@ class Article extends Component {
                   </div>
                 </div>
               </div>
-              <small>{url}</small>
               <br /><br />
             </div>
           )}

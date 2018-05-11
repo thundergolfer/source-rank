@@ -3,6 +3,9 @@
   font-family: 'Roboto';
   width: 100%;
   outline: 0;
+  border-radius: 10px;
+  border-color: rgb(177, 180, 255);
+  border-width: 3px;
 }
 
 .dataResult {
@@ -12,6 +15,7 @@
 .dataResult h2 {
   font-size: 7em;
   margin-bottom: 18px;
+  margin-top: 5%;
 }
 
 .dataResult p {
@@ -45,5 +49,8 @@
   margin-right: auto;
   background-size: cover;
   background-position: center;
+  border-width: 4px;
+  border-style: solid;
+  border-color: rgb(177, 180, 255);
   margin-top: -170px;
 }
